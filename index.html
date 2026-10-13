@@ -336,6 +336,27 @@
             <button onclick="filterRoadmapStage(4)" class="roadmap-stage-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition shrink-0" data-stage="4">Stage 4: Katakana Gairaigo (19-21)</button>
             <button onclick="filterRoadmapStage(5)" class="roadmap-stage-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition shrink-0" data-stage="5">Stage 5: Grand Master (22)</button>
           </div>
+
+          <!-- Format Soal Switcher (Roadmap) -->
+          <div class="pt-3 border-t border-secondary-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+            <div class="flex items-center gap-1.5 font-bold uppercase tracking-wider text-ink-muted text-[11px]">
+              <svg class="w-3.5 h-3.5 stroke-[2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+              <span>Format Soal Kuis:</span>
+            </div>
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button onclick="setQuizFormat('TYPE_INPUT')" class="quiz-format-btn px-3.5 py-1 rounded-full text-xs font-bold bg-primary text-white transition border border-primary shadow-xs" data-format="TYPE_INPUT">
+                Ketik Romaji
+              </button>
+              <button onclick="setQuizFormat('CHOICE_KANA_TO_ROMAJI')" class="quiz-format-btn px-3.5 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink hover:bg-white transition" data-format="CHOICE_KANA_TO_ROMAJI">
+                Pilihan Ganda Cepat (4 Pilihan)
+              </button>
+              <button onclick="setQuizFormat('CHOICE_ROMAJI_TO_KANA')" class="quiz-format-btn px-3.5 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink hover:bg-white transition" data-format="CHOICE_ROMAJI_TO_KANA">
+                Reverse Recall (Romaji → Kana)
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Levels Grid -->
@@ -363,14 +384,24 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3.5">
           <!-- Script Choice -->
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-ink-muted mb-2">Target Aksara</label>
             <select id="quizScriptSelect" class="w-full glass-input rounded-2xl px-4 py-2.5 text-sm text-ink font-semibold">
-              <option value="ALL" selected>Campuran (Hiragana &amp; Katakana)</option>
+              <option value="ALL" selected>Campuran (142 Kana)</option>
               <option value="HIRAGANA">Hiragana Saja (260 Kata)</option>
-              <option value="KATAKANA">Katakana Saja (67 Kata Serapan)</option>
+              <option value="KATAKANA">Katakana Saja (67 Kata)</option>
+            </select>
+          </div>
+
+          <!-- Format Choice -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-ink-muted mb-2">Format Kuis</label>
+            <select id="quizFormatSelect" onchange="setQuizFormat(this.value)" class="w-full glass-input rounded-2xl px-4 py-2.5 text-sm text-ink font-semibold">
+              <option value="TYPE_INPUT" selected>Ketik Romaji</option>
+              <option value="CHOICE_KANA_TO_ROMAJI">Pilihan Ganda Cepat</option>
+              <option value="CHOICE_ROMAJI_TO_KANA">Reverse Recall (Pilih Kana)</option>
             </select>
           </div>
 
@@ -379,9 +410,9 @@
             <label class="block text-xs font-bold uppercase tracking-wider text-ink-muted mb-2">Jumlah Kosakata</label>
             <select id="quizLengthSelect" class="w-full glass-input rounded-2xl px-4 py-2.5 text-sm text-ink font-semibold">
               <option value="10">10 Kata (Quick Drill)</option>
-              <option value="25" selected>25 Kata (Rekomendasi Santai)</option>
-              <option value="50">50 Kata (Tantangan Menengah)</option>
-              <option value="100">100 Kata (Maraton Fokus)</option>
+              <option value="25" selected>25 Kata (Santai)</option>
+              <option value="50">50 Kata (Menengah)</option>
+              <option value="100">100 Kata (Maraton)</option>
               <option value="999">Semua Kata Terpilih</option>
             </select>
           </div>
@@ -390,14 +421,14 @@
           <div>
             <label class="block text-xs font-bold uppercase tracking-wider text-ink-muted mb-2">Urutan Penyajian</label>
             <select id="quizOrderSelect" class="w-full glass-input rounded-2xl px-4 py-2.5 text-sm text-ink font-semibold">
-              <option value="random" selected>Acak / Shuffle (Optimal)</option>
-              <option value="sequential">Berurutan Sesuai Kamus</option>
+              <option value="random" selected>Acak / Shuffle</option>
+              <option value="sequential">Berurutan Kamus</option>
             </select>
           </div>
 
           <!-- Start Action (Pill CTA) -->
           <div class="flex items-end">
-            <button onclick="startQuizSession()" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full shadow-glass-cta flex items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0">
+            <button onclick="startQuizSession()" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-5 rounded-full shadow-glass-cta flex items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-sm">
               <span>Mulai Latihan</span>
               <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
             </button>
@@ -508,8 +539,8 @@
             <!-- Injected dynamically -->
           </div>
 
-          <!-- Input Area -->
-          <div class="max-w-md mx-auto space-y-3.5">
+          <!-- Input Response Container: Typing Mode -->
+          <div id="quizInputModeContainer" class="max-w-md mx-auto space-y-3.5">
             <div class="relative">
               <input 
                 type="text" 
@@ -517,7 +548,7 @@
                 autocomplete="off" 
                 autocorrect="off" 
                 autocapitalize="off" 
-                spellcheck="false"
+                spellcheck="false" 
                 placeholder="Ketik Romaji (contoh: asa)..." 
                 class="w-full text-center text-xl md:text-2xl font-mono py-3.5 px-4 rounded-2xl glass-input text-ink font-bold tracking-wide"
               >
@@ -534,6 +565,17 @@
               <button id="skipBtn" onclick="skipQuestion()" class="px-5 py-3.5 glass-btn-secondary text-ink font-semibold text-sm rounded-full transition" title="Lihat jawaban dan lanjutkan">
                 Lewati
               </button>
+            </div>
+          </div>
+
+          <!-- Multiple Choice Response Container: 4 Quick Cards -->
+          <div id="quizChoiceModeContainer" class="hidden max-w-xl mx-auto space-y-3">
+            <div id="choicesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Dynamically populated with 4 choice cards -->
+            </div>
+            <div class="flex items-center justify-between text-xs pt-1 px-1 text-ink-muted">
+              <span class="text-[11px]">Pilih kartu atau tekan <kbd class="px-1.5 py-0.5 bg-white border border-secondary-border rounded font-mono text-ink text-[10px]">1</kbd>–<kbd class="px-1.5 py-0.5 bg-white border border-secondary-border rounded font-mono text-ink text-[10px]">4</kbd></span>
+              <button onclick="skipQuestion()" class="text-xs text-ink-muted hover:text-ink font-semibold underline">Lewati Soal</button>
             </div>
           </div>
 
@@ -4562,6 +4604,8 @@
     let quizSubMode = 'roadmap'; // 'roadmap' | 'free'
     let activeQuizLevelId = null; // null for free practice, 1..22 for level mode
     let currentRoadmapStage = 'ALL'; // 'ALL' | 1 | 2 | 3 | 4 | 5
+    let currentQuizFormat = 'TYPE_INPUT'; // 'TYPE_INPUT' | 'CHOICE_KANA_TO_ROMAJI' | 'CHOICE_ROMAJI_TO_KANA'
+    let currentQuestionChoices = [];
     let userProgress = {
       unlockedLevel: 1,
       levels: {},
@@ -4922,9 +4966,183 @@
           userProgress.levels = parsed.levels || {};
           userProgress.totalStars = parsed.totalStars || 0;
         }
+        const savedFormat = localStorage.getItem('kanamaster_quiz_format');
+        if (savedFormat && ['TYPE_INPUT', 'CHOICE_KANA_TO_ROMAJI', 'CHOICE_ROMAJI_TO_KANA'].includes(savedFormat)) {
+          currentQuizFormat = savedFormat;
+        }
       } catch (e) {
         console.warn('localStorage not accessible, using in-memory progress');
       }
+    }
+
+    function setQuizFormat(format) {
+      currentQuizFormat = format;
+      try {
+        localStorage.setItem('kanamaster_quiz_format', format);
+      } catch (e) {}
+
+      document.querySelectorAll('.quiz-format-btn').forEach(btn => {
+        if (btn.getAttribute('data-format') === format) {
+          btn.className = 'quiz-format-btn px-3.5 py-1 rounded-full text-xs font-bold bg-primary text-white transition border border-primary shadow-xs';
+        } else {
+          btn.className = 'quiz-format-btn px-3.5 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink hover:bg-white transition';
+        }
+      });
+
+      const formatSelect = document.getElementById('quizFormatSelect');
+      if (formatSelect) formatSelect.value = format;
+    }
+
+    function generateMultipleChoices(item, format) {
+      const isReverse = format === 'CHOICE_ROMAJI_TO_KANA';
+      let candidates = [];
+      if (item.isCharDrill) {
+        candidates = KANA_CHARS.filter(k => k.char !== item.kana && k.script === item.script);
+      } else {
+        candidates = VOCAB_DATABASE.filter(w => w.kana !== item.kana && w.script === item.script);
+      }
+
+      const shuffledCandidates = [...candidates].sort(() => 0.5 - Math.random());
+      const distractors = [];
+
+      for (const c of shuffledCandidates) {
+        if (distractors.length >= 3) break;
+        const key = isReverse ? c.kana || c.char : c.romaji;
+        const correctKey = isReverse ? item.kana : item.romaji;
+        if (key !== correctKey && !distractors.some(d => (isReverse ? d.kana || d.char : d.romaji) === key)) {
+          distractors.push(c);
+        }
+      }
+
+      while (distractors.length < 3) {
+        const fallback = VOCAB_DATABASE[Math.floor(Math.random() * VOCAB_DATABASE.length)];
+        distractors.push(fallback);
+      }
+
+      const correctOption = {
+        id: 'correct',
+        kana: item.kana,
+        romaji: item.romaji,
+        meaning: item.meaning,
+        isCorrect: true
+      };
+
+      const distractorOptions = distractors.map((d, i) => ({
+        id: `distractor_${i}`,
+        kana: d.kana || d.char,
+        romaji: d.romaji,
+        meaning: d.meaning || `Karakter [${d.romaji}]`,
+        isCorrect: false
+      }));
+
+      return [correctOption, ...distractorOptions].sort(() => 0.5 - Math.random());
+    }
+
+    function renderChoicesForQuestion(item, format) {
+      currentQuestionChoices = generateMultipleChoices(item, format);
+      const grid = document.getElementById('choicesGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      currentQuestionChoices.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `choiceBtn_${idx}`;
+        btn.onclick = () => handleChoiceSelect(idx);
+
+        if (format === 'CHOICE_ROMAJI_TO_KANA') {
+          btn.className = 'choice-option-btn glass-card p-4 rounded-2xl border border-secondary-border flex items-center justify-between text-left hover:border-primary/50 hover:bg-white transition cursor-pointer w-full group active:scale-[0.98]';
+          btn.innerHTML = `
+            <div class="flex items-center gap-3.5">
+              <span class="w-7 h-7 rounded-full bg-black/5 group-hover:bg-primary group-hover:text-white text-ink-muted text-xs font-mono font-bold flex items-center justify-center shrink-0 transition">${idx + 1}</span>
+              <span class="font-jp font-bold text-2xl text-ink group-hover:text-primary transition">${opt.kana}</span>
+            </div>
+          `;
+        } else {
+          btn.className = 'choice-option-btn glass-card p-4 rounded-2xl border border-secondary-border flex items-center justify-between text-left hover:border-primary/50 hover:bg-white transition cursor-pointer w-full group active:scale-[0.98]';
+          btn.innerHTML = `
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-black/5 group-hover:bg-primary group-hover:text-white text-ink-muted text-xs font-mono font-bold flex items-center justify-center shrink-0 transition">${idx + 1}</span>
+              <div>
+                <span class="font-mono font-bold text-base text-ink group-hover:text-primary transition block">${opt.romaji}</span>
+                <span class="text-xs text-ink-muted block line-clamp-1">${opt.meaning}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        grid.appendChild(btn);
+      });
+    }
+
+    function handleChoiceSelect(index) {
+      if (isQuestionResolved) return;
+      const selectedOpt = currentQuestionChoices[index];
+      if (!selectedOpt) return;
+
+      const currentItem = currentQuizQueue[currentIndex];
+      const isCorrect = selectedOpt.isCorrect;
+
+      isQuestionResolved = true;
+      revealHint();
+
+      currentQuestionChoices.forEach((opt, idx) => {
+        const btn = document.getElementById(`choiceBtn_${idx}`);
+        if (!btn) return;
+        btn.disabled = true;
+        if (opt.isCorrect) {
+          btn.className = 'choice-option-btn p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/15 text-emerald-950 flex items-center justify-between text-left transition w-full shadow-xs';
+        } else if (idx === index && !isCorrect) {
+          btn.className = 'choice-option-btn p-4 rounded-2xl border-2 border-primary bg-primary/10 text-primary flex items-center justify-between text-left transition w-full shadow-xs';
+        } else {
+          btn.className = 'choice-option-btn p-4 rounded-2xl border border-secondary-border/40 opacity-40 flex items-center justify-between text-left transition w-full cursor-not-allowed';
+        }
+      });
+
+      const feedbackBox = document.getElementById('feedbackBox');
+      const feedbackTitle = document.getElementById('feedbackTitle');
+      const feedbackIcon = document.getElementById('feedbackIcon');
+      const feedbackIconWrap = document.getElementById('feedbackIconWrap');
+      const correctRomajiText = document.getElementById('correctRomajiText');
+
+      correctRomajiText.innerText = `${currentItem.kana} = ${currentItem.romaji} (${currentItem.meaning})`;
+      feedbackBox.classList.remove('hidden');
+
+      if (isCorrect) {
+        correctCount++;
+        streak++;
+        playToneSound(true);
+
+        feedbackBox.className = 'p-4 rounded-2xl text-left border bg-emerald-500/10 border-emerald-500/30 text-emerald-950 backdrop-blur-md animate-pop';
+        feedbackTitle.innerText = 'Jawaban Tepat! (正解)';
+        feedbackIconWrap.className = 'w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center shrink-0';
+        feedbackIcon.innerHTML = SVG_CHECK;
+      } else {
+        wrongCount++;
+        streak = 0;
+        playToneSound(false);
+
+        sessionMistakes.push({
+          word: currentItem,
+          userRomaji: selectedOpt.romaji || selectedOpt.kana
+        });
+
+        Array.from(currentItem.kana).forEach(c => {
+          if (c === 'ー') return;
+          if (KANA_CHARS.some(k => k.char === c)) {
+            charMistakeMap[c] = (charMistakeMap[c] || 0) + 1;
+          }
+        });
+
+        feedbackBox.className = 'p-4 rounded-2xl text-left border bg-primary/10 border-primary/30 text-ink backdrop-blur-md animate-pop';
+        feedbackTitle.innerText = 'Pilihan Kurang Tepat';
+        feedbackIconWrap.className = 'w-9 h-9 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0';
+        feedbackIcon.innerHTML = SVG_CROSS;
+      }
+
+      document.getElementById('statCorrect').innerText = correctCount;
+      document.getElementById('statWrong').innerText = wrongCount;
+
+      speakJapanese(currentItem.kana);
     }
 
     function saveProgress() {
@@ -5397,35 +5615,85 @@
         streakBadge.classList.add('hidden');
       }
 
-      document.getElementById('quizHiragana').innerText = item.kana;
-      document.getElementById('quizMeaning').innerText = item.meaning;
-      hideHint();
-
+      const kanaDisplay = document.getElementById('quizHiragana');
+      const inputContainer = document.getElementById('quizInputModeContainer');
+      const choiceContainer = document.getElementById('quizChoiceModeContainer');
       const chipsContainer = document.getElementById('quizCharChips');
-      chipsContainer.innerHTML = '';
-      Array.from(item.kana).forEach(char => {
-        if (char === 'ー') {
-          const span = document.createElement('span');
-          span.className = 'px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-800 font-jp text-xs font-bold';
-          span.innerText = 'ー (vokal panjang)';
-          chipsContainer.appendChild(span);
-        } else {
-          const span = document.createElement('span');
-          span.className = 'px-3 py-1 rounded-full bg-white/80 border border-secondary-border text-ink font-jp text-xs font-bold shadow-xs';
-          span.innerText = char;
-          chipsContainer.appendChild(span);
-        }
-      });
+      const feedbackBox = document.getElementById('feedbackBox');
 
-      const input = document.getElementById('romajiInput');
-      input.value = '';
-      input.disabled = false;
-      input.classList.remove('border-emerald-500', 'border-primary', 'bg-emerald-50/50', 'bg-primary/5');
-      input.focus();
+      feedbackBox.classList.add('hidden');
+      document.getElementById('quizMeaning').innerText = item.meaning;
 
-      document.getElementById('feedbackBox').classList.add('hidden');
-      document.getElementById('submitBtn').classList.remove('hidden');
-      document.getElementById('skipBtn').classList.remove('hidden');
+      if (currentQuizFormat === 'TYPE_INPUT') {
+        inputContainer.classList.remove('hidden');
+        choiceContainer.classList.add('hidden');
+        chipsContainer.classList.remove('hidden');
+
+        kanaDisplay.className = 'font-jp text-6xl md:text-8xl font-bold tracking-wider text-ink select-none hover:text-primary transition-colors cursor-pointer';
+        kanaDisplay.innerText = item.kana;
+        hideHint();
+
+        chipsContainer.innerHTML = '';
+        Array.from(item.kana).forEach(char => {
+          if (char === 'ー') {
+            const span = document.createElement('span');
+            span.className = 'px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-800 font-jp text-xs font-bold';
+            span.innerText = 'ー (vokal panjang)';
+            chipsContainer.appendChild(span);
+          } else {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 rounded-full bg-white/80 border border-secondary-border text-ink font-jp text-xs font-bold shadow-xs';
+            span.innerText = char;
+            chipsContainer.appendChild(span);
+          }
+        });
+
+        const input = document.getElementById('romajiInput');
+        input.value = '';
+        input.disabled = false;
+        input.classList.remove('border-emerald-500', 'border-primary', 'bg-emerald-50/50', 'bg-primary/5');
+        input.focus();
+
+        document.getElementById('submitBtn').classList.remove('hidden');
+        document.getElementById('skipBtn').classList.remove('hidden');
+
+      } else if (currentQuizFormat === 'CHOICE_KANA_TO_ROMAJI') {
+        inputContainer.classList.add('hidden');
+        choiceContainer.classList.remove('hidden');
+        chipsContainer.classList.remove('hidden');
+
+        kanaDisplay.className = 'font-jp text-6xl md:text-8xl font-bold tracking-wider text-ink select-none hover:text-primary transition-colors cursor-pointer';
+        kanaDisplay.innerText = item.kana;
+        hideHint();
+
+        chipsContainer.innerHTML = '';
+        Array.from(item.kana).forEach(char => {
+          if (char === 'ー') {
+            const span = document.createElement('span');
+            span.className = 'px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-800 font-jp text-xs font-bold';
+            span.innerText = 'ー (vokal panjang)';
+            chipsContainer.appendChild(span);
+          } else {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 rounded-full bg-white/80 border border-secondary-border text-ink font-jp text-xs font-bold shadow-xs';
+            span.innerText = char;
+            chipsContainer.appendChild(span);
+          }
+        });
+
+        renderChoicesForQuestion(item, 'CHOICE_KANA_TO_ROMAJI');
+
+      } else if (currentQuizFormat === 'CHOICE_ROMAJI_TO_KANA') {
+        inputContainer.classList.add('hidden');
+        choiceContainer.classList.remove('hidden');
+        chipsContainer.classList.add('hidden');
+
+        kanaDisplay.className = 'font-mono text-5xl md:text-7xl font-black tracking-wide text-primary select-none cursor-pointer';
+        kanaDisplay.innerText = item.romaji;
+        revealHint();
+
+        renderChoicesForQuestion(item, 'CHOICE_ROMAJI_TO_KANA');
+      }
     }
 
     function revealHint() {
@@ -5514,7 +5782,59 @@
 
     function skipQuestion() {
       if (isQuestionResolved) return;
-      evaluateAnswer('(dilewati)');
+      if (currentQuizFormat === 'TYPE_INPUT') {
+        evaluateAnswer('(dilewati)');
+        return;
+      }
+
+      isQuestionResolved = true;
+      revealHint();
+
+      currentQuestionChoices.forEach((opt, idx) => {
+        const btn = document.getElementById(`choiceBtn_${idx}`);
+        if (!btn) return;
+        btn.disabled = true;
+        if (opt.isCorrect) {
+          btn.className = 'choice-option-btn p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/15 text-emerald-950 flex items-center justify-between text-left transition w-full shadow-xs';
+        } else {
+          btn.className = 'choice-option-btn p-4 rounded-2xl border border-secondary-border/40 opacity-40 flex items-center justify-between text-left transition w-full cursor-not-allowed';
+        }
+      });
+
+      const currentItem = currentQuizQueue[currentIndex];
+      wrongCount++;
+      streak = 0;
+      playToneSound(false);
+
+      sessionMistakes.push({
+        word: currentItem,
+        userRomaji: '(dilewati)'
+      });
+
+      Array.from(currentItem.kana).forEach(c => {
+        if (c === 'ー') return;
+        if (KANA_CHARS.some(k => k.char === c)) {
+          charMistakeMap[c] = (charMistakeMap[c] || 0) + 1;
+        }
+      });
+
+      const feedbackBox = document.getElementById('feedbackBox');
+      const feedbackTitle = document.getElementById('feedbackTitle');
+      const feedbackIconWrap = document.getElementById('feedbackIconWrap');
+      const feedbackIcon = document.getElementById('feedbackIcon');
+      const correctRomajiText = document.getElementById('correctRomajiText');
+
+      correctRomajiText.innerText = `${currentItem.kana} = ${currentItem.romaji} (${currentItem.meaning})`;
+      feedbackBox.classList.remove('hidden');
+      feedbackBox.className = 'p-4 rounded-2xl text-left border bg-primary/10 border-primary/30 text-ink backdrop-blur-md animate-pop';
+      feedbackTitle.innerText = 'Soal Dilewati';
+      feedbackIconWrap.className = 'w-9 h-9 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0';
+      feedbackIcon.innerHTML = SVG_CROSS;
+
+      document.getElementById('statCorrect').innerText = correctCount;
+      document.getElementById('statWrong').innerText = wrongCount;
+
+      speakJapanese(currentItem.kana);
     }
 
     function evaluateAnswer(userVal) {
@@ -5533,7 +5853,7 @@
       const feedbackIconWrap = document.getElementById('feedbackIconWrap');
       const correctRomajiText = document.getElementById('correctRomajiText');
 
-      correctRomajiText.innerText = currentItem.romaji;
+      correctRomajiText.innerText = `${currentItem.kana} = ${currentItem.romaji} (${currentItem.meaning})`;
       feedbackBox.classList.remove('hidden');
 
       if (isCorrect) {
@@ -5606,16 +5926,28 @@
       }
 
       const activeTab = document.getElementById('quizView');
-      if (activeTab.classList.contains('hidden')) return;
+      if (activeTab && activeTab.classList.contains('hidden')) return;
+
+      const activeCard = document.getElementById('quizActiveCard');
+      if (!activeCard || activeCard.classList.contains('hidden')) return;
+
+      // Handle hotkeys 1-4 for multiple-choice modes
+      if (['1', '2', '3', '4'].includes(e.key)) {
+        const choiceContainer = document.getElementById('quizChoiceModeContainer');
+        if (choiceContainer && !choiceContainer.classList.contains('hidden') && !isQuestionResolved) {
+          const idx = parseInt(e.key, 10) - 1;
+          handleChoiceSelect(idx);
+          return;
+        }
+      }
 
       if (e.key === 'Enter') {
-        const activeCard = document.getElementById('quizActiveCard');
-        if (!activeCard.classList.contains('hidden')) {
-          if (!isQuestionResolved) {
+        if (!isQuestionResolved) {
+          if (currentQuizFormat === 'TYPE_INPUT') {
             submitAnswer();
-          } else {
-            advanceNextQuestion();
           }
+        } else {
+          advanceNextQuestion();
         }
       }
     });
@@ -6145,6 +6477,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       loadProgress();
+      setQuizFormat(currentQuizFormat);
       renderRoadmapHeader();
       renderRoadmapGrid();
       initCanvas();

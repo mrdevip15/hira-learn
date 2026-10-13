@@ -195,3 +195,33 @@ Stored under key `'kanamaster_progress'`:
 - **Card Styling:** Frosted glass (`backdrop-blur-xl`, `bg-white/80`, `border-secondary/30`).
 - **Level Badges:** Pill buttons in `#D52B1E` for active, subtle borders for completed, and muted lock states with custom vector SVGs.
 - **Progress Gauges:** High-contrast linear progression bar in Claro Red with stage-level filtering pills.
+
+---
+
+## Drill Types & Two-Way Quiz Modes (Tahap 3)
+
+KanaMaster provides three complementary drill modes to balance recognition speed, active recall, and precise spelling production:
+
+### 1. Mode 1: Ketik Romaji (`TYPE_INPUT`)
+- **Focus:** Active production and spelling accuracy.
+- **Workflow:** User reads Kana prompt and types Hepburn Romaji into an autofocus input.
+- **Tolerant Matching:** Normalizes spaces, macrons (`ō`/`ô` $\to$ `ou`), and handles single/double vowel loanword variants (e.g., `koohii` and `kohi` for コーヒー).
+
+### 2. Mode 2: Pilihan Ganda Cepat (`CHOICE_KANA_TO_ROMAJI`)
+- **Focus:** Rapid recognition drill and high-volume rehearsal.
+- **Workflow:** Large Kana prompt with 4 multiple-choice options showing Romaji + Indonesian meaning.
+- **Intelligent Distractor Generation:**
+  - Pulls distractors dynamically from `KANA_CHARS` for individual character drills and `VOCAB_DATABASE` for word drills.
+  - Strictly preserves script context (Hiragana distractors for Hiragana questions, Katakana for Katakana questions) with duplicate prevention.
+- **Interaction:** One-click selection or desktop hotkeys <kbd>1</kbd>–<kbd>4</kbd>.
+
+### 3. Mode 3: Reverse Recall (`CHOICE_ROMAJI_TO_KANA`)
+- **Focus:** Reading comprehension in reverse (recognizing the correct Japanese glyphs from romanized sounds and meanings).
+- **Workflow:** Large Latin Romaji heading + Indonesian meaning prompt, with 4 Kana options displayed in large typography (`font-jp text-2xl`).
+- **Anti-Spoil Behavior:** Automatically suppresses character breakdown chips during the question so the solution isn't revealed beforehand.
+
+### 4. Format Persistence & Dual-Mode Availability
+- Configurable directly from the **Roadmap Overview Header** (pill selector) and **Free Practice Setup Form** (dropdown).
+- Synchronized and persisted across user sessions in `localStorage` (`kanamaster_quiz_format`).
+- Instant visual feedback: Emerald green outline for correct choice, Claro Red (`#D52B1E`) for wrong with auto-highlighting of the correct answer, combined with Web Audio chimes and speech synthesis.
+
