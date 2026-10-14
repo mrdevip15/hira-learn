@@ -25,7 +25,6 @@
     let currentFilterRow = 'ALL';
     let isTargetedDrillActive = false;
     let targetedCharsList = [];
-    let currentCanvasQuickTab = 'HIRA_BASIC';
 
     // Progressive Levels State & Storage
     const PROGRESS_STORAGE_KEY = 'kanamaster_progress';

@@ -220,8 +220,57 @@ KanaMaster provides three complementary drill modes to balance recognition speed
 - **Workflow:** Large Latin Romaji heading + Indonesian meaning prompt, with 4 Kana options displayed in large typography (`font-jp text-2xl`).
 - **Anti-Spoil Behavior:** Automatically suppresses character breakdown chips during the question so the solution isn't revealed beforehand.
 
-### 4. Format Persistence & Dual-Mode Availability
+### 4. Mode 4: Kuis Dengar Audio (`CHOICE_AUDIO_TO_KANA`)
+- **Focus:** Auditory comprehension & phonetic ear training.
+- **Workflow:** Large animated speaker button with automatic native speech playback (`speakJapanese(item.kana)`). Visual kana text prompt is hidden, requiring the learner to rely purely on sound to identify the correct Kana or Romaji choice among 4 options.
+- **Interaction:** Desktop hotkeys <kbd>1</kbd>–<kbd>4</kbd> and <kbd>R</kbd> or click to replay audio.
+
+### 5. Format Persistence & Dual-Mode Availability
 - Configurable directly from the **Roadmap Overview Header** (pill selector) and **Free Practice Setup Form** (dropdown).
 - Synchronized and persisted across user sessions in `localStorage` (`kanamaster_quiz_format`).
 - Instant visual feedback: Emerald green outline for correct choice, Claro Red (`#D52B1E`) for wrong with auto-highlighting of the correct answer, combined with Web Audio chimes and speech synthesis.
+
+---
+
+## 🗂️ Mode Kartu Belajar (Flashcards 3D)
+
+- **3D Card Flip Animation:** Uses CSS 3D transforms (`perspective: 1000px`, `transform-style: preserve-3d`, `rotateY(180deg)`) for smooth physical card flipping.
+- **Bi-Directional Learning:**
+  - **Front:** Prominent kana glyph, audio button, and script badge.
+  - **Back:** Romaji pronunciation, Indonesian meaning, visual mnemonic tip, and example vocabulary words.
+- **Deck Filtering:**
+  - *Hiragana:* Dasar (46), Dakuon (25), Yōon (36).
+  - *Katakana:* Dasar (46), Dakuon (25), Yōon (36).
+  - *Kosakata:* Pilihan kata harian & JLPT N5.
+- **Keyboard Shortcuts:** <kbd>Space</kbd> untuk membalik kartu, <kbd>←</kbd> untuk Lupa, <kbd>→</kbd> untuk Ingat.
+
+---
+
+## 📊 Tabel Matriks Interaktif Gojūon (50-Sound Chart)
+
+- **Grid Layout:** 5×10 Gojūon matrix (*A, Ka, Sa, Ta, Na, Ha, Ma, Ya, Ra, Wa*) + Sub-tabel Dakuon & Handakuon (25) + Sub-tabel Yōon (33 kombinasi).
+- **Direct Canvas Link:** Tombol kuas pada setiap sel yang langsung membuka karakter tersebut di kanvas latihan menulis (`openCanvasForChar(char)`).
+
+---
+
+## ✍️ Kanvas Menulis & Metadata Goresan (Kakijun / 筆順)
+
+- **Stroke History & Undo:** Stack `strokeHistory` yang menyimpan setiap tarikan garis, memungkinkan undo goresan bertahap (<kbd>Ctrl+Z</kbd>) tanpa mereset seluruh kanvas.
+- **Brush Controls:** 3 ketebalan kuas (4px, 8px, 14px) dan 3 warna tinta (Hitam `#000000`, Claro Red `#D52B1E`, Slate `#64748B`).
+- **Stroke Guides:** Angka urutan goresan (*1, 2, 3...*) di posisi titik tarikan awal dan panduan instruksi tekstual langkah goresan.
+- **Export Artwork:** Unduh latihan kanvas sebagai PNG (`kanamaster_<kana>_<timestamp>.png`).
+
+---
+
+## 🌙 Dark Mode Neoplasticism & PWA
+
+- **Dark Mode Palette:**
+  - `canvas`: `#121212`
+  - `card-surface`: `rgba(36, 36, 38, 0.80)`
+  - `border`: `#38383a`
+  - `accent`: `#D52B1E` (Claro Red Pantone 485C)
+  - `ink`: `#F5F5F7`
+- **PWA Offline Engine:** Service Worker (`sw.js`) dengan strategi Stale-While-Revalidate untuk static assets dan manifest (`manifest.json`) untuk pemasangan layar utama perangkat.
+- **Backup & Restore:** Fungsi `exportProgressJSON()` dan `importProgressJSON()` untuk portabilitas data progres antar-perangkat.
+
 
