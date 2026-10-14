@@ -456,10 +456,19 @@
         levels: {},
         totalStars: 0
       };
+      try {
+        localStorage.removeItem('kanamaster_char_mistakes');
+      } catch (e) {}
+      if (typeof charMistakeMap !== 'undefined') {
+        charMistakeMap = {};
+      }
       saveProgress();
       closeResetModal();
       renderRoadmapHeader();
       renderRoadmapGrid();
+      if (typeof renderRowMasteryDashboard === 'function') {
+        renderRowMasteryDashboard();
+      }
     }
 
     function renderStarSVGs(count, max = 3) {
