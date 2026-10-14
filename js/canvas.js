@@ -442,8 +442,16 @@ function changeCanvasGuide() {
 
 function selectQuickChar(char) {
   const select = document.getElementById('charGuideSelect');
-  if (!select) return;
-  select.value = char;
+  if (select) {
+    let opt = select.querySelector(`option[value="${char}"]`);
+    if (!opt) {
+      opt = document.createElement('option');
+      opt.value = char;
+      opt.innerText = `${char} (Karakter)`;
+      select.appendChild(opt);
+    }
+    select.value = char;
+  }
   changeCanvasGuide();
 }
 

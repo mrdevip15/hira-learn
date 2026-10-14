@@ -361,7 +361,7 @@
     }
 
     function generateMultipleChoices(item, format) {
-      const isReverse = format === 'CHOICE_ROMAJI_TO_KANA';
+      const isReverse = format === 'CHOICE_ROMAJI_TO_KANA' || format === 'CHOICE_AUDIO_TO_KANA';
       let candidates = [];
       if (item.isCharDrill) {
         candidates = KANA_CHARS.filter(k => k.char !== item.kana && k.script === item.script);
@@ -416,12 +416,15 @@
         btn.id = `choiceBtn_${idx}`;
         btn.onclick = () => handleChoiceSelect(idx);
 
-        if (format === 'CHOICE_ROMAJI_TO_KANA') {
+        if (format === 'CHOICE_ROMAJI_TO_KANA' || format === 'CHOICE_AUDIO_TO_KANA') {
           btn.className = 'choice-option-btn glass-card p-4 rounded-2xl border border-secondary-border flex items-center justify-between text-left hover:border-primary/50 hover:bg-white transition cursor-pointer w-full group active:scale-[0.98]';
           btn.innerHTML = `
             <div class="flex items-center gap-3.5">
               <span class="w-7 h-7 rounded-full bg-black/5 group-hover:bg-primary group-hover:text-white text-ink-muted text-xs font-mono font-bold flex items-center justify-center shrink-0 transition">${idx + 1}</span>
-              <span class="font-jp font-bold text-2xl text-ink group-hover:text-primary transition">${opt.kana}</span>
+              <div>
+                <span class="font-jp font-bold text-2xl text-ink group-hover:text-primary transition block">${opt.kana}</span>
+                <span class="text-xs text-ink-muted block line-clamp-1">${opt.meaning ? opt.meaning : opt.romaji}</span>
+              </div>
             </div>
           `;
         } else {
@@ -504,6 +507,15 @@
         feedbackTitle.innerText = 'Pilihan Kurang Tepat';
         feedbackIconWrap.className = 'w-9 h-9 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0';
         feedbackIcon.innerHTML = SVG_CROSS;
+      }
+
+      if (currentQuizFormat === 'CHOICE_AUDIO_TO_KANA') {
+        const kanaDisplay = document.getElementById('quizHiragana');
+        if (kanaDisplay) {
+          kanaDisplay.className = 'font-jp text-6xl md:text-8xl font-bold tracking-wider text-ink select-none animate-pop cursor-pointer';
+          kanaDisplay.innerText = currentItem.kana;
+          kanaDisplay.onclick = () => playCurrentAudio();
+        }
       }
 
       document.getElementById('statCorrect').innerText = correctCount;
