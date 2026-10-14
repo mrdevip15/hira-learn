@@ -824,6 +824,27 @@
 
         <!-- Canvas Board and Tools -->
         <div class="flex flex-col items-center">
+          <!-- Brush Size & Color Controls Toolbar (Mondrian Style) -->
+          <div class="mb-4 flex flex-wrap items-center justify-center gap-4 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-secondary-border shadow-xs">
+            <!-- Brush Size Picker -->
+            <div class="flex items-center gap-1.5">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-ink-muted mr-1">Kuas:</span>
+              <button id="brushSize4Btn" onclick="setBrushSize(4)" class="brush-size-btn px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition" title="Tipis (4px)">Tipis</button>
+              <button id="brushSize8Btn" onclick="setBrushSize(8)" class="brush-size-btn px-3 py-1 rounded-full text-xs font-bold bg-primary text-white shadow-xs transition" title="Sedang (8px)">Sedang</button>
+              <button id="brushSize14Btn" onclick="setBrushSize(14)" class="brush-size-btn px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition" title="Tebal (14px)">Tebal</button>
+            </div>
+            
+            <div class="h-4 w-px bg-secondary-border hidden sm:block"></div>
+
+            <!-- Brush Color Picker -->
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-ink-muted mr-1">Warna:</span>
+              <button id="brushColorBlack" onclick="setBrushColor('#000000')" class="w-6 h-6 rounded-full bg-black border-2 border-white shadow-xs ring-2 ring-offset-2 ring-primary scale-110 transition-transform" title="Hitam (#000000)"></button>
+              <button id="brushColorRed" onclick="setBrushColor('#D52B1E')" class="w-6 h-6 rounded-full bg-[#D52B1E] border-2 border-white shadow-xs transition-transform hover:scale-105" title="Claro Red (#D52B1E)"></button>
+              <button id="brushColorSlate" onclick="setBrushColor('#64748B')" class="w-6 h-6 rounded-full bg-[#64748B] border-2 border-white shadow-xs transition-transform hover:scale-105" title="Slate (#64748B)"></button>
+            </div>
+          </div>
+
           <div class="relative bg-white/90 rounded-3xl border-2 border-secondary-border shadow-glass overflow-hidden p-3 backdrop-blur-md">
             <!-- Watermark Guide Kana behind canvas -->
             <div id="canvasWatermark" class="absolute inset-0 flex items-center justify-center font-jp text-[180px] md:text-[230px] font-bold text-black/10 select-none pointer-events-none transition-opacity duration-300">
@@ -833,12 +854,38 @@
             <!-- Grid crosshairs -->
             <div class="absolute inset-0 genkou-grid pointer-events-none"></div>
 
+            <!-- Numbered Stroke Hints Overlay -->
+            <div id="strokeHintsOverlay" class="absolute inset-0 pointer-events-none z-20"></div>
+
             <!-- Drawing Canvas -->
             <canvas id="practiceCanvas" width="320" height="320" class="relative z-10 cursor-crosshair touch-none"></canvas>
           </div>
 
           <!-- Canvas Controls (Pill Buttons) -->
           <div class="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+            <!-- Undo Button -->
+            <button id="undoStrokeBtn" onclick="undoLastStroke()" class="px-5 py-2.5 glass-btn-secondary text-ink font-bold rounded-full text-xs transition flex items-center gap-2 opacity-40 cursor-not-allowed" title="Undo goresan terakhir (Ctrl+Z / Cmd+Z)" disabled>
+              <svg class="w-4 h-4 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7v6h6"/>
+                <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+              </svg>
+              <span>Undo</span>
+            </button>
+
+            <!-- Toggle Stroke Numbers Button -->
+            <button id="toggleStrokeNumBtn" onclick="toggleStrokeNumbers()" class="px-5 py-2.5 glass-btn-secondary text-ink font-bold rounded-full text-xs transition flex items-center gap-2" title="Aktifkan/nonaktifkan nomor urutan goresan">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="10" y1="6" x2="21" y2="6"/>
+                <line x1="10" y1="12" x2="21" y2="12"/>
+                <line x1="10" y1="18" x2="21" y2="18"/>
+                <path d="M4 6h1v4"/>
+                <path d="M4 10h2"/>
+                <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>
+              </svg>
+              <span>Nomor Goresan</span>
+            </button>
+
+            <!-- Clear Canvas Button -->
             <button onclick="clearCanvas()" class="px-5 py-2.5 glass-btn-secondary text-ink font-bold rounded-full text-xs transition flex items-center gap-2">
               <svg class="w-4 h-4 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="3 6 5 6 21 6"/>
@@ -846,6 +893,8 @@
               </svg>
               <span>Bersihkan Kanvas</span>
             </button>
+
+            <!-- Toggle Watermark Guide Button -->
             <button id="toggleGuideBtn" onclick="toggleGuideWatermark()" class="px-5 py-2.5 glass-btn-secondary text-ink font-bold rounded-full text-xs transition flex items-center gap-2">
               <svg class="w-4 h-4 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
@@ -853,8 +902,20 @@
               </svg>
               <span>Sembunyikan Bayangan</span>
             </button>
-            <button id="canvasAudioBtn" onclick="playCanvasKanaAudio()" class="voice-ui hidden px-5 py-2.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-full text-xs transition flex items-center gap-2 shadow-glass-cta">
+
+            <!-- Download PNG Button -->
+            <button id="downloadCanvasBtn" onclick="downloadCanvasImage()" class="px-5 py-2.5 bg-primary hover:bg-primary-dark text-white font-bold rounded-full text-xs transition flex items-center gap-2 shadow-glass-cta hover:scale-105 active:scale-95" title="Ekspor latihan sebagai file PNG">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Unduh (PNG)</span>
+            </button>
+
+            <!-- Audio Pronunciation Button -->
+            <button id="canvasAudioBtn" onclick="playCanvasKanaAudio()" class="voice-ui hidden px-5 py-2.5 glass-btn-secondary text-ink font-bold rounded-full text-xs transition flex items-center gap-2">
+              <svg class="w-4 h-4 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
                 <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
@@ -863,14 +924,30 @@
             </button>
           </div>
 
+          <!-- Stroke Order Step Guide Card -->
+          <div id="strokeGuideCard" class="mt-6 w-full max-w-2xl bg-white/70 backdrop-blur-md rounded-2xl border border-secondary-border p-4 shadow-xs">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-secondary-border">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-ink font-heading">Panduan Urutan Goresan (Stroke Order)</span>
+              </div>
+              <span id="strokeCountDisplay" class="text-xs font-bold text-primary px-2.5 py-0.5 rounded-full bg-primary/10">3 Goresan</span>
+            </div>
+            <ul id="strokeStepsList" class="space-y-1.5 pl-1">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
           <!-- Kana Reference Quick Picker with Tabs -->
           <div class="mt-8 w-full max-w-2xl">
-            <div class="flex items-center justify-between pb-2 mb-3 border-b border-secondary-border">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-3 border-b border-secondary-border gap-2">
               <p class="text-xs font-bold uppercase tracking-wider text-ink-muted">Pilih Cepat Karakter</p>
-              <div class="flex gap-1">
-                <button onclick="setCanvasQuickTab('HIRA_BASIC')" id="canvasTabHiraBasic" class="canvas-quick-tab px-3 py-1 rounded-full text-xs font-bold bg-primary text-white transition">Hiragana (46)</button>
-                <button onclick="setCanvasQuickTab('KATA_BASIC')" id="canvasTabKataBasic" class="canvas-quick-tab px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Katakana (46)</button>
-                <button onclick="setCanvasQuickTab('DAKUON')" id="canvasTabDakuon" class="canvas-quick-tab px-3 py-1 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Dakuon (50)</button>
+              <div class="flex flex-wrap gap-1">
+                <button onclick="setCanvasQuickTab('HIRA_BASIC')" id="canvasTabHiraBasic" class="canvas-quick-tab px-3 py-1.5 rounded-full text-xs font-bold bg-primary text-white transition">Hiragana (46)</button>
+                <button onclick="setCanvasQuickTab('KATA_BASIC')" id="canvasTabKataBasic" class="canvas-quick-tab px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Katakana (46)</button>
+                <button onclick="setCanvasQuickTab('DAKUON')" id="canvasTabDakuon" class="canvas-quick-tab px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Dakuon (50)</button>
+                <button onclick="setCanvasQuickTab('HIRA_YOON')" id="canvasTabHiraYoon" class="canvas-quick-tab px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Hira Yōon (33)</button>
+                <button onclick="setCanvasQuickTab('KATA_YOON')" id="canvasTabKataYoon" class="canvas-quick-tab px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 border border-secondary-border text-ink-muted hover:text-ink transition">Kata Yōon (33)</button>
               </div>
             </div>
             <div id="canvasQuickGrid" class="grid grid-cols-5 sm:grid-cols-10 gap-2 text-center">
@@ -951,6 +1028,7 @@
 
   <!-- Application Data & Scripts -->
   <script src="data/kana.js"></script>
+  <script src="data/strokes.js"></script>
   <script src="data/vocab.js"></script>
   <script src="data/levels.js"></script>
   <script src="js/audio.js"></script>
