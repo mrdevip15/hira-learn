@@ -15,17 +15,24 @@ function switchTab(tab) {
     draw: document.getElementById('navDrawBtn')
   };
 
-  const inactiveClass = 'px-4 py-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/60 dark:hover:bg-white/10 dark:text-zinc-400 dark:hover:text-white transition-all duration-200 flex items-center gap-2 font-medium text-xs sm:text-sm border border-transparent shrink-0';
-  const activeClass = 'px-4 py-2 rounded-full transition-all duration-200 flex items-center gap-2 bg-primary text-white shadow-glass-cta font-bold text-xs sm:text-sm border border-primary shrink-0';
+  const inactiveClass = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/60 transition-all duration-200 flex items-center gap-1.5 font-medium text-xs sm:text-sm border border-transparent shrink-0';
+  const activeClass = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full transition-all duration-200 flex items-center gap-1.5 bg-primary text-white shadow-glass-cta font-bold text-xs sm:text-sm border border-primary shrink-0';
 
   Object.values(views).forEach(v => v && v.classList.add('hidden'));
-  Object.values(navBtns).forEach(b => b && (b.className = inactiveClass));
+  Object.entries(navBtns).forEach(([k, b]) => {
+    if (!b) return;
+    const isTarget = k === tab;
+    b.className = isTarget ? activeClass : inactiveClass;
+    const glyph = b.querySelector('.tab-glyph');
+    if (glyph) {
+      glyph.className = isTarget
+        ? 'tab-glyph w-5 h-5 rounded-md bg-white/20 flex items-center justify-center font-jp font-bold text-xs shrink-0 text-white'
+        : 'tab-glyph w-5 h-5 rounded-md bg-black/5 flex items-center justify-center font-jp font-bold text-xs shrink-0 text-ink';
+    }
+  });
 
   if (views[tab]) {
     views[tab].classList.remove('hidden');
-  }
-  if (navBtns[tab]) {
-    navBtns[tab].className = activeClass;
   }
 
   if (tab === 'vocab') {

@@ -4,21 +4,17 @@
  * Glass Card Dark #242426/80, Text #F5F5F7, Border #38383a.
  */
 
-const THEME_STORAGE_KEY = 'kanamaster_theme';
+const THEME_STORAGE_KEY = 'kanamaster_theme_v2';
 
-// SVG Icons for Theme Toggle Button
+// Japanese Kanji for Theme Toggle Button (昼 for Day/Light, 夜 for Night/Dark)
 const THEME_ICONS = {
-  SUN: `<svg class="w-4 h-4 text-amber-400 stroke-[2] transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="4"/>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-  </svg>`,
-  MOON: `<svg class="w-4 h-4 text-ink-muted group-hover:text-ink stroke-[2] transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-  </svg>`
+  SUN: `<span class="font-jp font-bold text-xs text-amber-600">昼</span>`,
+  MOON: `<span class="font-jp font-bold text-xs text-ink-muted">夜</span>`
 };
 
 /**
- * Determine user's preferred theme from localStorage or system preference.
+ * Determine user's preferred theme from localStorage.
+ * Always defaults to 'light' to strictly follow DESIGN.md (Mondrian #FFFFFF canvas).
  * @returns {'dark' | 'light'}
  */
 function getPreferredTheme() {
@@ -31,9 +27,7 @@ function getPreferredTheme() {
     // LocalStorage might be disabled/restricted
   }
 
-  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
+  // Strict compliance with DESIGN.md: Mondrian Design System Canvas is #FFFFFF
   return 'light';
 }
 
@@ -73,9 +67,7 @@ function updateThemeUI(theme) {
 function applyTheme(theme) {
   let resolvedTheme = theme;
   if (theme === 'system' || !theme) {
-    resolvedTheme = (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ? 'dark'
-      : 'light';
+    resolvedTheme = 'light';
   }
 
   if (typeof document !== 'undefined' && document.documentElement) {
@@ -111,27 +103,6 @@ function toggleDarkMode() {
 
   applyTheme(nextTheme);
   return nextTheme;
-}
-
-// Listen to OS theme changes if user hasn't explicitly locked preference
-if (typeof window !== 'undefined' && window.matchMedia) {
-  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  const handleSystemThemeChange = (e) => {
-    try {
-      const saved = localStorage.getItem(THEME_STORAGE_KEY);
-      if (!saved || saved === 'system') {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    } catch (err) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  };
-
-  if (mediaQuery.addEventListener) {
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
-  } else if (mediaQuery.addListener) {
-    mediaQuery.addListener(handleSystemThemeChange);
-  }
 }
 
 // Immediate initial execution to prevent flash of wrong theme (FOUC)
