@@ -15,7 +15,7 @@ function switchTab(tab) {
     draw: document.getElementById('navDrawBtn')
   };
 
-  const inactiveClass = 'px-4 py-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/60 transition-all duration-200 flex items-center gap-2 font-medium text-xs sm:text-sm border border-transparent shrink-0';
+  const inactiveClass = 'px-4 py-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/60 dark:hover:bg-white/10 dark:text-zinc-400 dark:hover:text-white transition-all duration-200 flex items-center gap-2 font-medium text-xs sm:text-sm border border-transparent shrink-0';
   const activeClass = 'px-4 py-2 rounded-full transition-all duration-200 flex items-center gap-2 bg-primary text-white shadow-glass-cta font-bold text-xs sm:text-sm border border-primary shrink-0';
 
   Object.values(views).forEach(v => v && v.classList.add('hidden'));
@@ -39,13 +39,20 @@ function switchTab(tab) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  if (typeof initTheme === 'function') {
+    initTheme();
+  }
   loadProgress();
   setQuizFormat(currentQuizFormat);
   renderRoadmapHeader();
   renderRoadmapGrid();
+  if (typeof renderRowMasteryDashboard === 'function') {
+    renderRowMasteryDashboard();
+  }
   initCanvas();
   updateCategoryFilterButtons();
   renderVocabTable(VOCAB_DATABASE);
   if (typeof initFlashcards === 'function') initFlashcards();
   if (typeof initGojuonChart === 'function') initGojuonChart();
 });
+

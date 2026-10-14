@@ -275,6 +275,9 @@ function setQuizSubMode(mode) {
       saveProgress();
       renderRoadmapHeader();
       renderRoadmapGrid();
+      if (typeof renderRowMasteryDashboard === 'function') {
+        renderRowMasteryDashboard();
+      }
 
       const banner = document.getElementById('levelResultBanner');
       banner.classList.remove('hidden');
@@ -662,6 +665,9 @@ function startQuizSession(customWordList = null) {
         if (c === 'ー') return;
         if (KANA_CHARS.some(k => k.char === c)) {
           charMistakeMap[c] = (charMistakeMap[c] || 0) + 1;
+          if (typeof recordMistake === 'function') {
+            recordMistake(c);
+          }
         }
       });
 
@@ -737,6 +743,9 @@ function startQuizSession(customWordList = null) {
           const isTargetKana = KANA_CHARS.some(k => k.char === c);
           if (isTargetKana) {
             charMistakeMap[c] = (charMistakeMap[c] || 0) + 1;
+            if (typeof recordMistake === 'function') {
+              recordMistake(c);
+            }
           }
         });
 

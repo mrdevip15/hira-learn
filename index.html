@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KanaMaster | Full Hiragana & Katakana (Baca & Tulis 320+ Kata)</title>
+  <!-- PWA Metadata & Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#D52B1E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KanaMaster">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <!-- Theme Management (Loaded early to prevent FOUC) -->
+  <script src="js/theme.js"></script>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Typography & Audio Synthesizer -->
@@ -13,6 +24,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -214,6 +226,125 @@
     .flashcard-inner.is-flipped {
       transform: rotateY(180deg);
     }
+
+    /* ============================================================ */
+    /* MONDRIAN NEOPLASTICISM DARK MODE PALETTE                     */
+    /* Background: #121212 / #18181b | Card: #242426/80             */
+    /* Text: #F5F5F7 | Accent: Claro Red #D52B1E | Border: #38383a   */
+    /* ============================================================ */
+    html.dark body {
+      background-color: #121212;
+      color: #F5F5F7;
+    }
+
+    html.dark .mondrian-grid {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    html.dark .ambient-glow-1 {
+      background: radial-gradient(circle, rgba(213, 43, 30, 0.22) 0%, rgba(213, 43, 30, 0.03) 65%, transparent 80%);
+    }
+
+    html.dark .ambient-glow-2 {
+      background: radial-gradient(circle, rgba(56, 56, 58, 0.45) 0%, rgba(24, 24, 27, 0.05) 60%, transparent 80%);
+    }
+
+    html.dark .glass-panel {
+      background: rgba(36, 36, 38, 0.80);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      outline: 1px solid #38383a;
+      box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    html.dark .glass-card {
+      background: rgba(36, 36, 38, 0.75);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      outline: 1px solid #38383a;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    html.dark .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    html.dark .glass-input {
+      background: rgba(24, 24, 27, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid #38383a;
+      color: #F5F5F7;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    html.dark .glass-input:focus {
+      background: #18181b;
+      border-color: #D52B1E;
+      box-shadow: 0 0 0 4px rgba(213, 43, 30, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    html.dark .glass-btn-secondary {
+      background: rgba(36, 36, 38, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid #38383a;
+      color: #F5F5F7;
+      box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    html.dark .glass-btn-secondary:hover {
+      background: rgba(56, 56, 58, 0.85);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+    }
+
+    html.dark header,
+    html.dark footer {
+      background-color: rgba(18, 18, 18, 0.85) !important;
+      border-color: #38383a !important;
+    }
+
+    html.dark .text-ink {
+      color: #F5F5F7 !important;
+    }
+
+    html.dark .text-ink-muted {
+      color: #ADAFAF !important;
+    }
+
+    html.dark .text-ink-subtle {
+      color: #71717a !important;
+    }
+
+    html.dark .border-secondary-border {
+      border-color: #38383a !important;
+    }
+
+    html.dark .bg-white\/80,
+    html.dark .bg-white\/75,
+    html.dark .bg-white\/70,
+    html.dark .bg-white\/60 {
+      background-color: rgba(36, 36, 38, 0.8) !important;
+    }
+
+    html.dark .bg-black\/5 {
+      background-color: rgba(255, 255, 255, 0.06) !important;
+    }
+
+    html.dark .bg-black\/40 {
+      background-color: rgba(0, 0, 0, 0.75) !important;
+    }
+
+    html.dark .border-white\/90,
+    html.dark .border-white\/80 {
+      border-color: #38383a !important;
+    }
   </style>
 </head>
 <body class="text-ink antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
@@ -288,6 +419,11 @@
           </svg>
           <span class="hidden sm:inline">Kanvas Tulis (142 Kana)</span><span class="sm:hidden">Tulis</span>
         </button>
+
+        <!-- Dark Mode Toggle Pill -->
+        <button id="themeToggleBtn" onclick="toggleDarkMode()" class="theme-toggle-btn px-3 py-2 rounded-full glass-btn-secondary transition-all duration-200 flex items-center gap-1.5 font-medium text-xs border border-secondary-border/50 hover:border-primary/40 shrink-0" aria-label="Beralih Tema" title="Ganti Mode Gelap / Terang">
+          <span class="theme-icon-wrap flex items-center"></span>
+        </button>
       </nav>
     </div>
   </header>
@@ -348,10 +484,22 @@
                 Kurikulum terstruktur 22 level dari vokal dasar hingga penguasaan 142 aksara. Dapatkan minimal akurasi 80% (2 bintang) untuk membuka level berikutnya.
               </p>
             </div>
-            <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
-              <button onclick="confirmResetProgress()" class="px-3.5 py-1.5 rounded-full glass-btn-secondary text-[11px] font-semibold text-ink-muted hover:text-rose-600 transition flex items-center gap-1.5" title="Reset semua level">
+            <div class="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap">
+              <button onclick="exportProgressJSON()" class="px-3.5 py-1.5 rounded-full glass-btn-secondary text-[11px] font-semibold text-ink hover:text-primary transition flex items-center gap-1.5" title="Cadangkan progres ke file JSON">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Ekspor Backup</span>
+              </button>
+              <button onclick="triggerImportProgress()" class="px-3.5 py-1.5 rounded-full glass-btn-secondary text-[11px] font-semibold text-ink hover:text-primary transition flex items-center gap-1.5" title="Pulihkan progres dari file JSON">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Impor Backup</span>
+              </button>
+              <button onclick="toggleAnalyticsDashboard()" class="px-3.5 py-1.5 rounded-full glass-btn-secondary text-[11px] font-semibold text-ink hover:text-primary transition flex items-center gap-1.5" title="Tampilkan / Sembunyikan Dashboard Analitik Baris">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Analitik</span>
+              </button>
+              <button onclick="confirmResetProgress()" class="px-3 py-1.5 rounded-full glass-btn-secondary text-[11px] font-semibold text-ink-muted hover:text-rose-600 transition flex items-center gap-1.5" title="Reset semua level">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                <span>Reset Progres</span>
+                <span>Reset</span>
               </button>
             </div>
           </div>
@@ -400,6 +548,44 @@
                 Kuis Dengar (Audio → Kana)
               </button>
             </div>
+          </div>
+        </div>
+
+        <!-- Kana Row Mastery Analytics Dashboard (Neoplasticism Visual Analytics) -->
+        <div id="rowMasterySection" class="glass-panel rounded-3xl p-6 sm:p-7 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-secondary-border/40 pb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
+                <svg class="w-5 h-5 stroke-[2.2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-lg sm:text-xl font-bold text-ink font-heading">
+                    Analitik Penguasaan Baris Kana (A — WA)
+                  </h3>
+                  <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold border border-primary/20">
+                    10 Baris Konsonan
+                  </span>
+                </div>
+                <p class="text-xs text-ink-muted mt-0.5">
+                  Persentase akurasi &amp; metrik penguasaan baris kana berdasarkan riwayat evaluasi dan kesalahan.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="renderRowMasteryDashboard()" class="px-3.5 py-1.5 rounded-full glass-btn-secondary text-xs font-semibold text-ink hover:text-primary transition flex items-center gap-1.5" title="Perbarui Data Analitik">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                <span>Refresh</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="rowMasteryContainer">
+            <!-- Dynamically populated by renderRowMasteryDashboard() -->
           </div>
         </div>
 
@@ -1410,9 +1596,27 @@
   <script src="data/vocab.js"></script>
   <script src="data/levels.js"></script>
   <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/vocab.js"></script>
   <script src="js/canvas.js"></script>
+  <script src="js/flashcards.js"></script>
+  <script src="js/chart.js"></script>
   <script src="js/app.js"></script>
+
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => {
+            console.log('KanaMaster Service Worker registered successfully with scope:', reg.scope);
+          })
+          .catch((err) => {
+            console.warn('KanaMaster Service Worker registration failed:', err);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
