@@ -115,8 +115,19 @@ let canvas, ctx;
 
     function selectQuickChar(char) {
       const select = document.getElementById('charGuideSelect');
-      select.value = char;
-      changeCanvasGuide();
+      if (select) {
+        let opt = select.querySelector(`option[value="${char}"]`);
+        if (!opt) {
+          opt = document.createElement('option');
+          opt.value = char;
+          opt.innerText = `${char} (Karakter)`;
+          select.appendChild(opt);
+        }
+        select.value = char;
+      }
+      const wm = document.getElementById('canvasWatermark');
+      if (wm) wm.innerText = char;
+      clearCanvas();
     }
 
     function toggleGuideWatermark() {

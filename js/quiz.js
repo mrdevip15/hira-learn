@@ -498,6 +498,32 @@ function startQuizSession(customWordList = null) {
         revealHint();
 
         renderChoicesForQuestion(item, 'CHOICE_ROMAJI_TO_KANA');
+
+      } else if (currentQuizFormat === 'CHOICE_AUDIO_TO_KANA') {
+        inputContainer.classList.add('hidden');
+        choiceContainer.classList.remove('hidden');
+        chipsContainer.classList.add('hidden');
+
+        kanaDisplay.className = 'py-4 flex flex-col items-center justify-center select-none';
+        kanaDisplay.innerHTML = `
+          <button type="button" id="audioDrillPulseBtn" onclick="playCurrentAudio()" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-primary/10 border-2 border-primary text-primary flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse group cursor-pointer" title="Klik untuk putar ulang audio">
+            <svg class="w-12 h-12 stroke-[2] text-primary group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
+          <span class="text-xs font-bold text-primary tracking-wide uppercase mt-3 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            Dengarkan Audio (Klik Speaker / Tekan Spasi untuk Putar Ulang)
+          </span>
+        `;
+        hideHint();
+
+        renderChoicesForQuestion(item, 'CHOICE_AUDIO_TO_KANA');
+
+        // Putar audio secara otomatis
+        speakJapanese(item.kana);
       }
     }
 
@@ -639,6 +665,15 @@ function startQuizSession(customWordList = null) {
       document.getElementById('statCorrect').innerText = correctCount;
       document.getElementById('statWrong').innerText = wrongCount;
 
+      if (currentQuizFormat === 'CHOICE_AUDIO_TO_KANA') {
+        const kanaDisplay = document.getElementById('quizHiragana');
+        if (kanaDisplay) {
+          kanaDisplay.className = 'font-jp text-6xl md:text-8xl font-bold tracking-wider text-ink select-none animate-pop cursor-pointer';
+          kanaDisplay.innerText = currentItem.kana;
+          kanaDisplay.onclick = () => playCurrentAudio();
+        }
+      }
+
       speakJapanese(currentItem.kana);
     }
 
@@ -744,6 +779,13 @@ function startQuizSession(customWordList = null) {
           handleChoiceSelect(idx);
           return;
         }
+      }
+
+      // Replay audio on Space or R when audio listening quiz is active and unresolved
+      if ((e.code === 'Space' || e.key === 'r' || e.key === 'R') && currentQuizFormat === 'CHOICE_AUDIO_TO_KANA' && !isQuestionResolved) {
+        e.preventDefault();
+        playCurrentAudio();
+        return;
       }
 
       if (e.key === 'Enter') {
