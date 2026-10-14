@@ -1,4 +1,4 @@
-// 22 Progressive Levels across 5 Stages
+// 25 Progressive Levels across 6 Stages
     const LEVELS_CONFIG = [
       {
         id: 1,
@@ -241,6 +241,86 @@
         description: "Uji kecakapan puncak membaca cepat gabungan Hiragana dan Katakana.",
         script: "all",
         row: "MASTER"
+      },
+      {
+        id: 23,
+        stage: 6,
+        stageName: "Stage 6: Yōon & Kombinasi Khusus",
+        title: "Hiragana Yōon Seion (Kombinasi Ya, Yu, Yo)",
+        badge: "きゃ〜りょ (21 Hiragana)",
+        targetChars: [
+          "きゃ", "きゅ", "きょ",
+          "しゃ", "しゅ", "しょ",
+          "ちゃ", "ちゅ", "ちょ",
+          "にゃ", "にゅ", "にょ",
+          "ひゃ", "ひゅ", "ひょ",
+          "みゃ", "みゅ", "みょ",
+          "りゃ", "りゅ", "りょ"
+        ],
+        description: "Kuasai 21 kombinasi vokal luncuran Ya, Yu, Yo pada konsonan dasar Hiragana (K, S, T, N, H, M, R) serta kosakata esensial seperti おちゃ, しゃしん, りょこう.",
+        script: "hiragana",
+        row: "YOON_HIRA"
+      },
+      {
+        id: 24,
+        stage: 6,
+        stageName: "Stage 6: Yōon & Kombinasi Khusus",
+        title: "Dakuon/Handakuon Yōon & Katakana Yōon",
+        badge: "ぎゃ〜ぴょ • キャ〜ピョ",
+        targetChars: [
+          "ぎゃ", "ぎゅ", "ぎょ",
+          "じゃ", "じゅ", "じょ",
+          "びゃ", "びゅ", "びょ",
+          "ぴゃ", "ぴゅ", "ぴょ",
+          "キャ", "キュ", "キョ",
+          "シャ", "シュ", "ショ",
+          "チャ", "チュ", "チョ",
+          "ニャ", "ニュ", "ニョ",
+          "ヒャ", "ヒュ", "ヒョ",
+          "ミャ", "ミュ", "ミョ",
+          "リャ", "リュ", "リョ",
+          "ギャ", "ギュ", "ギョ",
+          "ジャ", "ジュ", "ジョ",
+          "ビャ", "ビュ", "ビョ",
+          "ピャ", "ピュ", "ピョ"
+        ],
+        description: "Kombinasi Yōon bersuara tebal (G, J, B) dan letupan (P) serta adaptasi aksara Katakana Yōon pada kata serapan modern (ジュース, シャツ, ニュース).",
+        script: "all",
+        row: "YOON_ALL"
+      },
+      {
+        id: 25,
+        stage: 6,
+        stageName: "Stage 6: Yōon & Kombinasi Khusus",
+        title: "Yōon & JLPT N5 Master Challenge",
+        badge: "72 Yōon • Sokuon • 430+ Kata",
+        targetChars: [
+          "きゃ", "きゅ", "きょ",
+          "しゃ", "しゅ", "しょ",
+          "ちゃ", "ちゅ", "ちょ",
+          "にゃ", "にゅ", "にょ",
+          "ひゃ", "ひゅ", "ひょ",
+          "みゃ", "みゅ", "みょ",
+          "りゃ", "りゅ", "りょ",
+          "ぎゃ", "ぎゅ", "ぎょ",
+          "じゃ", "じゅ", "じょ",
+          "びゃ", "びゅ", "びょ",
+          "ぴゃ", "ぴゅ", "ぴょ",
+          "キャ", "キュ", "キョ",
+          "シャ", "シュ", "ショ",
+          "チャ", "チュ", "チョ",
+          "ニャ", "ニュ", "ニョ",
+          "ヒャ", "ヒュ", "ヒョ",
+          "ミャ", "ミュ", "ミョ",
+          "リャ", "リュ", "リョ",
+          "ギャ", "ギュ", "ギョ",
+          "ジャ", "ジュ", "ジョ",
+          "ビャ", "ビュ", "ビョ",
+          "ピャ", "ピュ", "ピョ"
+        ],
+        description: "Tantangan kelulusan komprehensif Yōon, sokuon konsonan ganda (っ/ッ), tanda vokal panjang (ー), dan kosakata esensial JLPT N5.",
+        script: "all",
+        row: "YOON_MASTER"
       }
     ];
 
@@ -477,3 +557,7 @@
       }
       return html;
     }
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { LEVELS_CONFIG };
+}

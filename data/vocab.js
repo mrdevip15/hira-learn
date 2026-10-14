@@ -2614,5 +2614,881 @@ const VOCAB_DATABASE = [
     "meaning": "kotak surat pos (postbox / mailbox)",
     "row": "LIFE",
     "script": "katakana"
+  },
+  {
+    "id": 328,
+    "kana": "に",
+    "romaji": "ni",
+    "meaning": "dua [angka 2] (two)",
+    "row": "NA",
+    "script": "hiragana"
+  },
+  {
+    "id": 329,
+    "kana": "さん",
+    "romaji": "san",
+    "meaning": "tiga [angka 3] (three)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 330,
+    "kana": "よん",
+    "romaji": "yon",
+    "meaning": "empat [angka 4] (four)",
+    "row": "YA",
+    "script": "hiragana"
+  },
+  {
+    "id": 331,
+    "kana": "ご",
+    "romaji": "go",
+    "meaning": "lima [angka 5] (five)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 332,
+    "kana": "ろく",
+    "romaji": "roku",
+    "meaning": "enam [angka 6] (six)",
+    "row": "RA",
+    "script": "hiragana"
+  },
+  {
+    "id": 333,
+    "kana": "なな",
+    "romaji": "nana",
+    "meaning": "tujuh [angka 7] (seven)",
+    "row": "NA",
+    "script": "hiragana"
+  },
+  {
+    "id": 334,
+    "kana": "しち",
+    "romaji": "shichi",
+    "meaning": "tujuh [angka 7 - variasi bunyi] (seven)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 335,
+    "kana": "はち",
+    "romaji": "hachi",
+    "meaning": "delapan [angka 8] (eight)",
+    "row": "HA",
+    "script": "hiragana"
+  },
+  {
+    "id": 336,
+    "kana": "きゅう",
+    "romaji": "kyuu",
+    "meaning": "sembilan [angka 9] (nine)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 337,
+    "kana": "く",
+    "romaji": "ku",
+    "meaning": "sembilan [angka 9 - variasi ku] (nine)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 338,
+    "kana": "じゅう",
+    "romaji": "juu",
+    "meaning": "sepuluh [angka 10] (ten)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 339,
+    "kana": "ひゃく",
+    "romaji": "hyaku",
+    "meaning": "seratus [angka 100] (hundred)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 340,
+    "kana": "せん",
+    "romaji": "sen",
+    "meaning": "seribu [angka 1.000] (thousand)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 341,
+    "kana": "まん",
+    "romaji": "man",
+    "meaning": "sepuluh ribu [angka 10.000] (ten thousand)",
+    "row": "MA",
+    "script": "hiragana"
+  },
+  {
+    "id": 342,
+    "kana": "えん",
+    "romaji": "en",
+    "meaning": "yen mata uang Jepang (Japanese yen currency)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 343,
+    "kana": "ゼロ",
+    "romaji": "zero",
+    "meaning": "angka nol (zero)",
+    "row": "DAILY",
+    "script": "katakana"
+  },
+  {
+    "id": 344,
+    "kana": "おはよう",
+    "romaji": "ohayou",
+    "meaning": "selamat pagi [akrab / kasual] (good morning)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 345,
+    "kana": "おはようございます",
+    "romaji": "ohayougozaimasu",
+    "meaning": "selamat pagi [sopan / formal] (good morning formal)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 346,
+    "kana": "こんにちは",
+    "romaji": "konnichiwa",
+    "meaning": "halo, selamat siang (hello, good afternoon)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 347,
+    "kana": "こんばんは",
+    "romaji": "konbanwa",
+    "meaning": "selamat malam (good evening)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 348,
+    "kana": "すみません",
+    "romaji": "sumimasen",
+    "meaning": "permisi, maaf, terima kasih atas bantuannya (excuse me, sorry)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 349,
+    "kana": "ごめん",
+    "romaji": "gomen",
+    "meaning": "maaf [kasual / sahabat] (sorry informal)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 350,
+    "kana": "ごめんなさい",
+    "romaji": "gomennasai",
+    "meaning": "mohon maaf secara tulus (I am sorry)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 351,
+    "kana": "はい",
+    "romaji": "hai",
+    "meaning": "ya, benar, hadir (yes, correct)",
+    "row": "HA",
+    "script": "hiragana"
+  },
+  {
+    "id": 352,
+    "kana": "いいえ",
+    "romaji": "iie",
+    "meaning": "tidak, bukan, tidak masalah (no, not at all)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 353,
+    "kana": "どうぞ",
+    "romaji": "douzo",
+    "meaning": "silakan (please, go ahead / after you)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 354,
+    "kana": "どうも",
+    "romaji": "doumo",
+    "meaning": "terima kasih banyak, sapaan ramah (thanks, hello)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 355,
+    "kana": "よろしく",
+    "romaji": "yoroshiku",
+    "meaning": "salam kenal, mohon bantuannya (pleased to meet you)",
+    "row": "YA",
+    "script": "hiragana"
+  },
+  {
+    "id": 356,
+    "kana": "おつかれさま",
+    "romaji": "otsukaresama",
+    "meaning": "terima kasih atas kerja kerasnya (thank you for your hard work)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 357,
+    "kana": "いただきます",
+    "romaji": "itadakimasu",
+    "meaning": "ungkapan syukur sebelum makan (grace before meal / bon appetit)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 358,
+    "kana": "ごちそうさま",
+    "romaji": "gochisousama",
+    "meaning": "ungkapan terima kasih setelah makan (thank you for the delicious meal)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 359,
+    "kana": "いま",
+    "romaji": "ima",
+    "meaning": "sekarang, saat ini (now)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 360,
+    "kana": "ばん",
+    "romaji": "ban",
+    "meaning": "malam hari (evening, night)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 361,
+    "kana": "ふん",
+    "romaji": "fun",
+    "meaning": "menit [satuan waktu] (minute)",
+    "row": "HA",
+    "script": "hiragana"
+  },
+  {
+    "id": 362,
+    "kana": "ぷん",
+    "romaji": "pun",
+    "meaning": "menit [bunyi letup handakuon] (minute)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 363,
+    "kana": "まいにち",
+    "romaji": "mainichi",
+    "meaning": "setiap hari (every day)",
+    "row": "MA",
+    "script": "hiragana"
+  },
+  {
+    "id": 364,
+    "kana": "けさ",
+    "romaji": "kesa",
+    "meaning": "tadi pagi, pagi hari ini (this morning)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 365,
+    "kana": "こんばん",
+    "romaji": "konban",
+    "meaning": "malam ini (tonight)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 366,
+    "kana": "おととい",
+    "romaji": "ototoi",
+    "meaning": "kemarin lusa (day before yesterday)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 367,
+    "kana": "あさって",
+    "romaji": "asatte",
+    "meaning": "besok lusa (day after tomorrow)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 368,
+    "kana": "せんしゅう",
+    "romaji": "senshuu",
+    "meaning": "minggu lalu (last week)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 369,
+    "kana": "こんしゅう",
+    "romaji": "konshuu",
+    "meaning": "minggu ini (this week)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 370,
+    "kana": "らいしゅう",
+    "romaji": "raishuu",
+    "meaning": "minggu depan (next week)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 371,
+    "kana": "まいあさ",
+    "romaji": "maiasa",
+    "meaning": "setiap pagi (every morning)",
+    "row": "MA",
+    "script": "hiragana"
+  },
+  {
+    "id": 372,
+    "kana": "まいばん",
+    "romaji": "maiban",
+    "meaning": "setiap malam (every night)",
+    "row": "MA",
+    "script": "hiragana"
+  },
+  {
+    "id": 373,
+    "kana": "おちゃ",
+    "romaji": "ocha",
+    "meaning": "teh hijau khas Jepang (Japanese green tea)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 374,
+    "kana": "さかな",
+    "romaji": "sakana",
+    "meaning": "ikan laut/tawar (fish)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 375,
+    "kana": "くだもの",
+    "romaji": "kudamono",
+    "meaning": "buah-buahan segar (fruits)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 376,
+    "kana": "たまご",
+    "romaji": "tamago",
+    "meaning": "telur ayam (egg)",
+    "row": "TA",
+    "script": "hiragana"
+  },
+  {
+    "id": 377,
+    "kana": "ぎゅうにゅう",
+    "romaji": "gyuunyuu",
+    "meaning": "susu sapi segar (cow milk)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 378,
+    "kana": "とりにく",
+    "romaji": "toriniku",
+    "meaning": "daging ayam (chicken meat)",
+    "row": "TA",
+    "script": "hiragana"
+  },
+  {
+    "id": 379,
+    "kana": "りんご",
+    "romaji": "ringo",
+    "meaning": "buah apel (apple)",
+    "row": "RA",
+    "script": "hiragana"
+  },
+  {
+    "id": 380,
+    "kana": "パン",
+    "romaji": "pan",
+    "meaning": "roti tawar / manis (bread)",
+    "row": "FOOD",
+    "script": "katakana"
+  },
+  {
+    "id": 381,
+    "kana": "ぎゅうにく",
+    "romaji": "gyuuniku",
+    "meaning": "daging sapi (beef)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 382,
+    "kana": "ぶたにく",
+    "romaji": "butaniku",
+    "meaning": "daging babi (pork)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 383,
+    "kana": "ラーメン",
+    "romaji": "raamen",
+    "meaning": "mie kuah ramen Jepang (ramen noodles)",
+    "row": "FOOD",
+    "script": "katakana"
+  },
+  {
+    "id": 384,
+    "kana": "カレー",
+    "romaji": "karee",
+    "meaning": "nasi kari kuah kental Jepang (curry rice)",
+    "row": "FOOD",
+    "script": "katakana"
+  },
+  {
+    "id": 385,
+    "kana": "しゃしん",
+    "romaji": "shashin",
+    "meaning": "foto, potret potret kenangan (photograph)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 386,
+    "kana": "きゃく",
+    "romaji": "kyaku",
+    "meaning": "tamu kehormatan, pelanggan (guest, customer)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 387,
+    "kana": "りょこう",
+    "romaji": "ryokou",
+    "meaning": "perjalanan, tamasya berlibur (travel, trip)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 388,
+    "kana": "べんきょう",
+    "romaji": "benkyou",
+    "meaning": "belajar, menuntut ilmu (study)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 389,
+    "kana": "でんしゃ",
+    "romaji": "densha",
+    "meaning": "kereta rel listrik komuter (electric train)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 390,
+    "kana": "じてんしゃ",
+    "romaji": "jitensha",
+    "meaning": "sepeda kayuh ontel (bicycle)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 391,
+    "kana": "しゅくだい",
+    "romaji": "shukudai",
+    "meaning": "pekerjaan rumah tugas sekolah (homework)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 392,
+    "kana": "かいしゃ",
+    "romaji": "kaisha",
+    "meaning": "perusahaan kantor tempat kerja (company, office)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 393,
+    "kana": "しゅみ",
+    "romaji": "shumi",
+    "meaning": "hobi, minat kegemaran (hobby, interest)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 394,
+    "kana": "ちゅうごく",
+    "romaji": "chuugoku",
+    "meaning": "negara Tiongkok (China)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 395,
+    "kana": "とうきょう",
+    "romaji": "toukyou",
+    "meaning": "Tokyo [ibu kota metropolitan Jepang] (Tokyo)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 396,
+    "kana": "きょうと",
+    "romaji": "kyouto",
+    "meaning": "Kyoto [kota budaya bersejarah] (Kyoto)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 397,
+    "kana": "きゅうこう",
+    "romaji": "kyuukou",
+    "meaning": "kereta ekspres laju cepat (express train)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 398,
+    "kana": "りょうり",
+    "romaji": "ryouri",
+    "meaning": "masakan kuliner, memasak (cuisine, cooking)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 399,
+    "kana": "りょうしん",
+    "romaji": "ryoushin",
+    "meaning": "kedua orang tua kandung ayah ibu (parents)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 400,
+    "kana": "しょくどう",
+    "romaji": "shokudou",
+    "meaning": "kantin sekolah / ruang makan (cafeteria, canteen)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 401,
+    "kana": "じんじゃ",
+    "romaji": "jinja",
+    "meaning": "kuil Shinto gerbang torii (Shinto shrine)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 402,
+    "kana": "じゅうしょ",
+    "romaji": "juusho",
+    "meaning": "alamat tempat kediaman (address)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 403,
+    "kana": "きょうしつ",
+    "romaji": "kyoushitsu",
+    "meaning": "ruang kelas tempat belajar (classroom)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 404,
+    "kana": "ちょうし",
+    "romaji": "choushi",
+    "meaning": "kondisi kesehatan / irama nada (condition, state of health)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 405,
+    "kana": "りょかん",
+    "romaji": "ryokan",
+    "meaning": "penginapan ryokan tradisional Jepang (traditional Japanese inn)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 406,
+    "kana": "きしゃ",
+    "romaji": "kisha",
+    "meaning": "wartawan jurnalis media / kereta uap (journalist / reporter)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 407,
+    "kana": "じしょ",
+    "romaji": "jisho",
+    "meaning": "buku kamus kosakata (dictionary)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 408,
+    "kana": "やっきょく",
+    "romaji": "yakkyoku",
+    "meaning": "apotek tempat beli obat (pharmacy)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 409,
+    "kana": "ひょうばん",
+    "romaji": "hyouban",
+    "meaning": "reputasi, ketenaran nama baik (reputation)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 410,
+    "kana": "みょうじ",
+    "romaji": "myouji",
+    "meaning": "nama keluarga marga Jepang (family surname)",
+    "row": "YOON",
+    "script": "hiragana"
+  },
+  {
+    "id": 411,
+    "kana": "がっこう",
+    "romaji": "gakkou",
+    "meaning": "sekolah tempat menuntut ilmu (school)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 412,
+    "kana": "きって",
+    "romaji": "kitte",
+    "meaning": "perangko surat pos (postage stamp)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 413,
+    "kana": "きっぷ",
+    "romaji": "kippu",
+    "meaning": "tiket karcis kereta api (train ticket)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 414,
+    "kana": "ざっし",
+    "romaji": "zasshi",
+    "meaning": "majalah terbitan berkala (magazine)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 415,
+    "kana": "きっさてん",
+    "romaji": "kissaten",
+    "meaning": "kedai kafe kopi tradisional Jepang (coffee shop)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 416,
+    "kana": "せんせい",
+    "romaji": "sensei",
+    "meaning": "guru, dosen pengajar, dokter (teacher, master)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 417,
+    "kana": "がくせい",
+    "romaji": "gakusei",
+    "meaning": "siswa, murid, mahasiswa (student)",
+    "row": "DAKUON",
+    "script": "hiragana"
+  },
+  {
+    "id": 418,
+    "kana": "ともだち",
+    "romaji": "tomodachi",
+    "meaning": "teman, sahabat karib (friend)",
+    "row": "TA",
+    "script": "hiragana"
+  },
+  {
+    "id": 419,
+    "kana": "にほん",
+    "romaji": "nihon",
+    "meaning": "negara Jepang (Japan)",
+    "row": "NA",
+    "script": "hiragana"
+  },
+  {
+    "id": 420,
+    "kana": "にほんご",
+    "romaji": "nihongo",
+    "meaning": "bahasa Jepang (Japanese language)",
+    "row": "NA",
+    "script": "hiragana"
+  },
+  {
+    "id": 421,
+    "kana": "ほん",
+    "romaji": "hon",
+    "meaning": "buku bacaan (book)",
+    "row": "HA",
+    "script": "hiragana"
+  },
+  {
+    "id": 422,
+    "kana": "くるま",
+    "romaji": "kuruma",
+    "meaning": "kendaraan beroda empat / mobil (car)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 423,
+    "kana": "うち",
+    "romaji": "uchi",
+    "meaning": "rumah kediaman pribadi (home, house)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 424,
+    "kana": "いえ",
+    "romaji": "ie",
+    "meaning": "bangunan rumah tempat tinggal (house)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 425,
+    "kana": "かぞく",
+    "romaji": "kazoku",
+    "meaning": "anggota keluarga inti (family)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 426,
+    "kana": "しごと",
+    "romaji": "shigoto",
+    "meaning": "pekerjaan, tugas kerja profesi (job, work)",
+    "row": "SA",
+    "script": "hiragana"
+  },
+  {
+    "id": 427,
+    "kana": "いく",
+    "romaji": "iku",
+    "meaning": "pergi menuju tempat tertentu (to go)",
+    "row": "A",
+    "script": "hiragana"
+  },
+  {
+    "id": 428,
+    "kana": "くる",
+    "romaji": "kuru",
+    "meaning": "datang menghampiri (to come)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 429,
+    "kana": "かえる",
+    "romaji": "kaeru",
+    "meaning": "pulang kembali ke rumah (to return / go home)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 430,
+    "kana": "たべる",
+    "romaji": "taberu",
+    "meaning": "makan hidangan makanan (to eat)",
+    "row": "TA",
+    "script": "hiragana"
+  },
+  {
+    "id": 431,
+    "kana": "のむ",
+    "romaji": "nomu",
+    "meaning": "minum air atau cairan (to drink)",
+    "row": "NA",
+    "script": "hiragana"
+  },
+  {
+    "id": 432,
+    "kana": "みる",
+    "romaji": "miru",
+    "meaning": "melihat, menonton, menyaksikan (to see / watch)",
+    "row": "MA",
+    "script": "hiragana"
+  },
+  {
+    "id": 433,
+    "kana": "きく",
+    "romaji": "kiku",
+    "meaning": "mendengar, menyimak / bertanya (to hear / listen / ask)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 434,
+    "kana": "よむ",
+    "romaji": "yomu",
+    "meaning": "membaca teks tulisan buku (to read)",
+    "row": "YA",
+    "script": "hiragana"
+  },
+  {
+    "id": 435,
+    "kana": "かく",
+    "romaji": "kaku",
+    "meaning": "menulis kata / menggambar sketsa (to write / draw)",
+    "row": "KA",
+    "script": "hiragana"
+  },
+  {
+    "id": 436,
+    "kana": "かう",
+    "romaji": "kau",
+    "meaning": "membeli suatu barang (to buy)",
+    "row": "KA",
+    "script": "hiragana"
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { VOCAB_DATABASE };
+}

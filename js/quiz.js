@@ -34,8 +34,9 @@ function setQuizSubMode(mode) {
     }
 
     function renderRoadmapHeader() {
+      const totalLevels = LEVELS_CONFIG.length;
       const completedCount = Object.values(userProgress.levels).filter(l => l.stars >= 2).length;
-      const pct = Math.round((completedCount / 22) * 100);
+      const pct = Math.round((completedCount / totalLevels) * 100);
 
       const headerStars = document.getElementById('headerStarsTotal');
       const headerLevel = document.getElementById('headerLevelUnlocked');
@@ -44,7 +45,7 @@ function setQuizSubMode(mode) {
 
       if (headerStars) headerStars.innerText = userProgress.totalStars;
       if (headerLevel) headerLevel.innerText = userProgress.unlockedLevel;
-      if (percentText) percentText.innerText = `${completedCount}/22 Level Selesai (${pct}%) • ${userProgress.totalStars}/66 Bintang`;
+      if (percentText) percentText.innerText = `${completedCount}/${totalLevels} Level Selesai (${pct}%) • ${userProgress.totalStars}/${totalLevels * 3} Bintang`;
       if (progressBar) progressBar.style.width = `${Math.max(4, pct)}%`;
     }
 
@@ -202,12 +203,26 @@ function setQuizSubMode(mode) {
         vocabItems = VOCAB_DATABASE.filter(w => w.script === 'katakana' && w.row === 'FOOD');
       } else if (cfg.row === 'TECH_LIFE') {
         vocabItems = VOCAB_DATABASE.filter(w => w.script === 'katakana' && ['TECH','PLACE','DAILY','LIFE'].includes(w.row));
+      } else if (cfg.row === 'YOON_HIRA' || cfg.row === 'YOON_HIRAGANA') {
+        vocabItems = VOCAB_DATABASE.filter(w => w.script === 'hiragana' && (w.row === 'YOON' || (cfg.targetChars && cfg.targetChars.some(c => w.kana.includes(c)))));
+      } else if (cfg.row === 'YOON_KATA' || cfg.row === 'YOON_KATAKANA') {
+        vocabItems = VOCAB_DATABASE.filter(w => w.script === 'katakana' && (w.row === 'YOON' || (cfg.targetChars && cfg.targetChars.some(c => w.kana.includes(c)))));
+      } else if (cfg.row === 'YOON_ALL' || cfg.row === 'YOON_MASTER') {
+        vocabItems = VOCAB_DATABASE.filter(w => w.row === 'YOON' || (cfg.targetChars && cfg.targetChars.some(c => w.kana.includes(c))));
       } else if (cfg.row === 'MASTER') {
         vocabItems = [...VOCAB_DATABASE];
+      } else if (cfg.targetChars && cfg.targetChars.length > 0) {
+        vocabItems = VOCAB_DATABASE.filter(w => cfg.targetChars.some(c => w.kana.includes(c)));
+      }
+
+      if (vocabItems.length === 0) {
+        vocabItems = VOCAB_DATABASE.filter(w => cfg.script === 'all' || w.script === cfg.script);
       }
 
       const shuffledVocab = [...vocabItems].sort(() => 0.5 - Math.random());
-      const sessionTargetCount = levelId === 22 ? 15 : 10;
+      const maxLevel = LEVELS_CONFIG.length;
+      const isGrandChallenge = levelId === 22 || levelId === maxLevel;
+      const sessionTargetCount = isGrandChallenge ? 15 : 10;
       let sessionItems = [];
 
       if (singleCharItems.length > 0) {
@@ -241,7 +256,8 @@ function setQuizSubMode(mode) {
       const isPassed = accuracy >= 80;
       let isNewUnlock = false;
 
-      if (isPassed && levelId >= userProgress.unlockedLevel && levelId < 22) {
+      const maxLevel = LEVELS_CONFIG.length;
+      if (isPassed && levelId >= userProgress.unlockedLevel && levelId < maxLevel) {
         userProgress.unlockedLevel = levelId + 1;
         isNewUnlock = true;
       }
@@ -296,7 +312,7 @@ function setQuizSubMode(mode) {
       }
 
       const actionsContainer = document.getElementById('summaryActionButtonsContainer');
-      if (isPassed && levelId < 22) {
+      if (isPassed && levelId < maxLevel) {
         actionsContainer.innerHTML = `
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button onclick="startLevelQuiz(${levelId + 1})" class="w-full sm:w-auto px-7 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-bold transition text-sm shadow-glass-cta flex items-center justify-center gap-2 hover:-translate-y-0.5">
@@ -311,13 +327,13 @@ function setQuizSubMode(mode) {
             </button>
           </div>
         `;
-      } else if (isPassed && levelId === 22) {
+      } else if (isPassed && levelId === maxLevel) {
         actionsContainer.innerHTML = `
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button onclick="resetToQuizSetup()" class="px-7 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-bold transition text-sm shadow-glass-cta flex items-center justify-center gap-2 hover:-translate-y-0.5">
               <span>Selamat! Kembali ke Roadmap</span>
             </button>
-            <button onclick="startLevelQuiz(22)" class="px-6 py-3 glass-btn-secondary text-ink rounded-full font-semibold transition text-sm hover:-translate-y-0.5">
+            <button onclick="startLevelQuiz(${maxLevel})" class="px-6 py-3 glass-btn-secondary text-ink rounded-full font-semibold transition text-sm hover:-translate-y-0.5">
               Tantang Ulang Grand Master
             </button>
           </div>

@@ -1,5 +1,5 @@
-// 142 Kana characters (46 Hiragana + 25 Dakuon + 46 Katakana + 25 Dakuon)
-    const KANA_CHARS = [
+// 217 Kana characters (46 Hiragana + 25 Dakuon + 36 Yoon + 1 Sokuon + 46 Katakana + 25 Dakuon + 36 Yoon + 1 Sokuon + 1 Choonpu)
+const KANA_CHARS = [
   {
     "char": "あ",
     "romaji": "a",
@@ -993,7 +993,566 @@
     "row": "PA",
     "script": "katakana",
     "tip": "Karakter ホ dengan tanda lingkaran maru (゜)."
+  },
+  {
+    "char": "きゃ",
+    "romaji": "kya",
+    "row": "KYA",
+    "script": "hiragana",
+    "tip": "Kombinasi き (ki) dan ゃ (ya kecil). Dibaca 'kya'. Ketik 'kya' pada keyboard."
+  },
+  {
+    "char": "きゅ",
+    "romaji": "kyu",
+    "row": "KYA",
+    "script": "hiragana",
+    "tip": "Kombinasi き (ki) dan ゅ (yu kecil). Dibaca 'kyu'. Ketik 'kyu' pada keyboard."
+  },
+  {
+    "char": "きょ",
+    "romaji": "kyo",
+    "row": "KYA",
+    "script": "hiragana",
+    "tip": "Kombinasi き (ki) dan ょ (yo kecil). Dibaca 'kyo'. Ketik 'kyo' pada keyboard."
+  },
+  {
+    "char": "しゃ",
+    "romaji": "sha",
+    "row": "SHA",
+    "script": "hiragana",
+    "tip": "Kombinasi し (shi) dan ゃ (ya kecil). Dibaca 'sha' (seperti syaraf). Ketik 'sha' atau 'sya'."
+  },
+  {
+    "char": "しゅ",
+    "romaji": "shu",
+    "row": "SHA",
+    "script": "hiragana",
+    "tip": "Kombinasi し (shi) dan ゅ (yu kecil). Dibaca 'shu' (seperti syukur). Ketik 'shu' atau 'syu'."
+  },
+  {
+    "char": "しょ",
+    "romaji": "sho",
+    "row": "SHA",
+    "script": "hiragana",
+    "tip": "Kombinasi し (shi) dan ょ (yo kecil). Dibaca 'sho' (seperti syok). Ketik 'sho' atau 'syo'."
+  },
+  {
+    "char": "ちゃ",
+    "romaji": "cha",
+    "row": "CHA",
+    "script": "hiragana",
+    "tip": "Kombinasi ち (chi) dan ゃ (ya kecil). Dibaca 'cha' (seperti cangkir). Ketik 'cha' atau 'tya'."
+  },
+  {
+    "char": "ちゅ",
+    "romaji": "chu",
+    "row": "CHA",
+    "script": "hiragana",
+    "tip": "Kombinasi ち (chi) dan ゅ (yu kecil). Dibaca 'chu' (seperti cium). Ketik 'chu' atau 'tyu'."
+  },
+  {
+    "char": "ちょ",
+    "romaji": "cho",
+    "row": "CHA",
+    "script": "hiragana",
+    "tip": "Kombinasi ち (chi) dan ょ (yo kecil). Dibaca 'cho' (seperti cokelat). Ketik 'cho' atau 'tyo'."
+  },
+  {
+    "char": "にゃ",
+    "romaji": "nya",
+    "row": "NYA",
+    "script": "hiragana",
+    "tip": "Kombinasi に (ni) dan ゃ (ya kecil). Dibaca 'nya' sengau hidung lembut suara kucing. Ketik 'nya'."
+  },
+  {
+    "char": "にゅ",
+    "romaji": "nyu",
+    "row": "NYA",
+    "script": "hiragana",
+    "tip": "Kombinasi に (ni) dan ゅ (yu kecil). Dibaca 'nyu' sengau luncuran seperti 'nyiur'. Ketik 'nyu'."
+  },
+  {
+    "char": "にょ",
+    "romaji": "nyo",
+    "row": "NYA",
+    "script": "hiragana",
+    "tip": "Kombinasi に (ni) dan ょ (yo kecil). Dibaca 'nyo' sengau membulat seperti 'nyonya'. Ketik 'nyo'."
+  },
+  {
+    "char": "ひゃ",
+    "romaji": "hya",
+    "row": "HYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ひ (hi) dan ゃ (ya kecil). Dibaca 'hya' dari hembusan langit-langit mulut. Ketik 'hya'."
+  },
+  {
+    "char": "ひゅ",
+    "romaji": "hyu",
+    "row": "HYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ひ (hi) dan ゅ (yu kecil). Dibaca 'hyu' mendesing lembut. Ketik 'hyu'."
+  },
+  {
+    "char": "ひょ",
+    "romaji": "hyo",
+    "row": "HYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ひ (hi) dan ょ (yo kecil). Dibaca 'hyo' seperti kata 'hyouban'. Ketik 'hyo'."
+  },
+  {
+    "char": "みゃ",
+    "romaji": "mya",
+    "row": "MYA",
+    "script": "hiragana",
+    "tip": "Kombinasi み (mi) dan ゃ (ya kecil). Dibaca 'mya' sengau bibir. Ketik 'mya'."
+  },
+  {
+    "char": "みゅ",
+    "romaji": "myu",
+    "row": "MYA",
+    "script": "hiragana",
+    "tip": "Kombinasi み (mi) dan ゅ (yu kecil). Dibaca 'myu' sengau bibir luncuran (seperti musik). Ketik 'myu'."
+  },
+  {
+    "char": "みょ",
+    "romaji": "myo",
+    "row": "MYA",
+    "script": "hiragana",
+    "tip": "Kombinasi み (mi) dan ょ (yo kecil). Dibaca 'myo' sengau bibir membulat (seperti 'myouji'). Ketik 'myo'."
+  },
+  {
+    "char": "りゃ",
+    "romaji": "rya",
+    "row": "RYA",
+    "script": "hiragana",
+    "tip": "Kombinasi り (ri) dan ゃ (ya kecil). Dibaca 'rya' sentuhan ujung lidah cepat. Ketik 'rya'."
+  },
+  {
+    "char": "りゅ",
+    "romaji": "ryu",
+    "row": "RYA",
+    "script": "hiragana",
+    "tip": "Kombinasi り (ri) dan ゅ (yu kecil). Dibaca 'ryu' (seperti ryuugaku = studi luar negeri). Ketik 'ryu'."
+  },
+  {
+    "char": "りょ",
+    "romaji": "ryo",
+    "row": "RYA",
+    "script": "hiragana",
+    "tip": "Kombinasi り (ri) dan ょ (yo kecil). Dibaca 'ryo' (seperti ryokou = perjalanan wisata). Ketik 'ryo'."
+  },
+  {
+    "char": "ぎゃ",
+    "romaji": "gya",
+    "row": "GYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぎ (gi) bertenten dan ゃ (ya kecil). Dakuon bersuara tebal 'gya'. Ketik 'gya'."
+  },
+  {
+    "char": "ぎゅ",
+    "romaji": "gyu",
+    "row": "GYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぎ (gi) bertenten dan ゅ (yu kecil). Dibaca 'gyu' (seperti gyuuniku = daging sapi). Ketik 'gyu'."
+  },
+  {
+    "char": "ぎょ",
+    "romaji": "gyo",
+    "row": "GYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぎ (gi) bertenten dan ょ (yo kecil). Dibaca 'gyo' (seperti gyouza = pangsit jepang). Ketik 'gyo'."
+  },
+  {
+    "char": "じゃ",
+    "romaji": "ja",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi じ (ji) bertenten dan ゃ (ya kecil). Dibaca 'ja' (seperti 'ja, mata' = sampai jumpa). Ketik 'ja' atau 'zya'."
+  },
+  {
+    "char": "じゅ",
+    "romaji": "ju",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi じ (ji) bertenten dan ゅ (yu kecil). Dibaca 'ju' (seperti juusho = alamat). Ketik 'ju' atau 'zyu'."
+  },
+  {
+    "char": "じょ",
+    "romaji": "jo",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi じ (ji) bertenten dan ょ (yo kecil). Dibaca 'jo' (seperti josei = perempuan). Ketik 'jo' atau 'zyo'."
+  },
+  {
+    "char": "ぢゃ",
+    "romaji": "ja",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぢ (ji/di) bertenten dan ゃ (ya kecil). Fonetik identik dengan じゃ ('ja'). Ketik 'dya' atau 'zya'."
+  },
+  {
+    "char": "ぢゅ",
+    "romaji": "ju",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぢ (ji/di) bertenten dan ゅ (yu kecil). Fonetik identik dengan じゅ ('ju'). Ketik 'dyu' atau 'zyu'."
+  },
+  {
+    "char": "ぢょ",
+    "romaji": "jo",
+    "row": "JA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぢ (ji/di) bertenten dan ょ (yo kecil). Fonetik identik dengan じょ ('jo'). Ketik 'dyo' atau 'zyo'."
+  },
+  {
+    "char": "びゃ",
+    "romaji": "bya",
+    "row": "BYA",
+    "script": "hiragana",
+    "tip": "Kombinasi び (bi) bertenten dan ゃ (ya kecil). Ketik 'bya'. Letupan bibir bersuara 'bya'."
+  },
+  {
+    "char": "びゅ",
+    "romaji": "byu",
+    "row": "BYA",
+    "script": "hiragana",
+    "tip": "Kombinasi び (bi) bertenten dan ゅ (yu kecil). Ketik 'byu'. Letupan bibir bersuara desau 'byu'."
+  },
+  {
+    "char": "びょ",
+    "romaji": "byo",
+    "row": "BYA",
+    "script": "hiragana",
+    "tip": "Kombinasi び (bi) bertenten dan ょ (yo kecil). Ketik 'byo'. Muncul pada kata 'byouin' (rumah sakit)."
+  },
+  {
+    "char": "ぴゃ",
+    "romaji": "pya",
+    "row": "PYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぴ (pi) bermaru dan ゃ (ya kecil). Ketik 'pya'. Handakuon letupan tak bersuara 'pya'."
+  },
+  {
+    "char": "ぴゅ",
+    "romaji": "pyu",
+    "row": "PYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぴ (pi) bermaru dan ゅ (yu kecil). Ketik 'pyu'. Handakuon letupan tak bersuara 'pyu'."
+  },
+  {
+    "char": "ぴょ",
+    "romaji": "pyo",
+    "row": "PYA",
+    "script": "hiragana",
+    "tip": "Kombinasi ぴ (pi) bermaru dan ょ (yo kecil). Ketik 'pyo'. Menyerupai onomatopoeia lompat katak (pyon-pyon)."
+  },
+  {
+    "char": "キャ",
+    "romaji": "kya",
+    "row": "KYA",
+    "script": "katakana",
+    "tip": "Kombinasi キ (ki) dan ャ (ya kecil). Ketik 'kya' pada keyboard. Muncul pada kata キャンプ (camping)."
+  },
+  {
+    "char": "キュ",
+    "romaji": "kyu",
+    "row": "KYA",
+    "script": "katakana",
+    "tip": "Kombinasi キ (ki) dan ュ (yu kecil). Ketik 'kyu' pada keyboard. Muncul pada kata キュート (cute)."
+  },
+  {
+    "char": "キョ",
+    "romaji": "kyo",
+    "row": "KYA",
+    "script": "katakana",
+    "tip": "Kombinasi キ (ki) dan ョ (yo kecil). Ketik 'kyo' pada keyboard. Muncul pada kata キオスク/キョスク."
+  },
+  {
+    "char": "シャ",
+    "romaji": "sha",
+    "row": "SHA",
+    "script": "katakana",
+    "tip": "Kombinasi シ (shi) dan ャ (ya kecil). Ketik 'sha' atau 'sya'. Muncul pada シャツ (kemeja) & シャワー (shower)."
+  },
+  {
+    "char": "シュ",
+    "romaji": "shu",
+    "row": "SHA",
+    "script": "katakana",
+    "tip": "Kombinasi シ (shi) dan ュ (yu kecil). Ketik 'shu' atau 'syu'. Muncul pada kata シュークリーム (kue sus choux)."
+  },
+  {
+    "char": "ショ",
+    "romaji": "sho",
+    "row": "SHA",
+    "script": "katakana",
+    "tip": "Kombinasi シ (shi) dan ョ (yo kecil). Ketik 'sho' atau 'syo'. Muncul pada kata ショップ (toko/shop)."
+  },
+  {
+    "char": "チャ",
+    "romaji": "cha",
+    "row": "CHA",
+    "script": "katakana",
+    "tip": "Kombinasi チ (chi) dan ャ (ya kecil). Ketik 'cha' atau 'tya'. Muncul pada kata チャット (chat) & チャンピオン."
+  },
+  {
+    "char": "チュ",
+    "romaji": "chu",
+    "row": "CHA",
+    "script": "katakana",
+    "tip": "Kombinasi チ (chi) dan ュ (yu kecil). Ketik 'chu' atau 'tyu'. Muncul pada kata チューリップ (bunga tulip)."
+  },
+  {
+    "char": "チョ",
+    "romaji": "cho",
+    "row": "CHA",
+    "script": "katakana",
+    "tip": "Kombinasi チ (chi) dan ョ (yo kecil). Ketik 'cho' atau 'tyo'. Muncul pada kata チョコレート (cokelat)."
+  },
+  {
+    "char": "ニャ",
+    "romaji": "nya",
+    "row": "NYA",
+    "script": "katakana",
+    "tip": "Kombinasi ニ (ni) dan ャ (ya kecil). Ketik 'nya'. Aksara katakana tiruan suara mengeong kucing."
+  },
+  {
+    "char": "ニュ",
+    "romaji": "nyu",
+    "row": "NYA",
+    "script": "katakana",
+    "tip": "Kombinasi ニ (ni) dan ュ (yu kecil). Ketik 'nyu'. Sangat populer pada kata ニュース (berita / news)."
+  },
+  {
+    "char": "ニョ",
+    "romaji": "nyo",
+    "row": "NYA",
+    "script": "katakana",
+    "tip": "Kombinasi ニ (ni) dan ョ (yo kecil). Ketik 'nyo'. Muncul pada kata serapan kuliner ニョッキ (gnocchi)."
+  },
+  {
+    "char": "ヒャ",
+    "romaji": "hya",
+    "row": "HYA",
+    "script": "katakana",
+    "tip": "Kombinasi ヒ (hi) dan ャ (ya kecil). Ketik 'hya' pada keyboard."
+  },
+  {
+    "char": "ヒュ",
+    "romaji": "hyu",
+    "row": "HYA",
+    "script": "katakana",
+    "tip": "Kombinasi ヒ (hi) dan ュ (yu kecil). Ketik 'hyu'. Muncul pada kata serapan ヒューズ (sekring / fuse)."
+  },
+  {
+    "char": "ヒョ",
+    "romaji": "hyo",
+    "row": "HYA",
+    "script": "katakana",
+    "tip": "Kombinasi ヒ (hi) dan ョ (yo kecil). Ketik 'hyo' pada keyboard."
+  },
+  {
+    "char": "ミャ",
+    "romaji": "mya",
+    "row": "MYA",
+    "script": "katakana",
+    "tip": "Kombinasi ミ (mi) dan ャ (ya kecil). Ketik 'mya'. Muncul pada nama negara ミャンマー (Myanmar)."
+  },
+  {
+    "char": "ミュ",
+    "romaji": "myu",
+    "row": "MYA",
+    "script": "katakana",
+    "tip": "Kombinasi ミ (mi) dan ュ (yu kecil). Ketik 'myu'. Muncul pada kata ミュージック (musik) & ミュージアム."
+  },
+  {
+    "char": "ミョ",
+    "romaji": "myo",
+    "row": "MYA",
+    "script": "katakana",
+    "tip": "Kombinasi ミ (mi) dan ョ (yo kecil). Ketik 'myo' pada keyboard."
+  },
+  {
+    "char": "リャ",
+    "romaji": "rya",
+    "row": "RYA",
+    "script": "katakana",
+    "tip": "Kombinasi リ (ri) dan ャ (ya kecil). Ketik 'rya' pada keyboard."
+  },
+  {
+    "char": "リュ",
+    "romaji": "ryu",
+    "row": "RYA",
+    "script": "katakana",
+    "tip": "Kombinasi リ (ri) dan ュ (yu kecil). Ketik 'ryu'. Muncul pada kata serapan リュック (tas ransel/rucksack)."
+  },
+  {
+    "char": "リョ",
+    "romaji": "ryo",
+    "row": "RYA",
+    "script": "katakana",
+    "tip": "Kombinasi リ (ri) dan ョ (yo kecil). Ketik 'ryo' pada keyboard."
+  },
+  {
+    "char": "ギャ",
+    "romaji": "gya",
+    "row": "GYA",
+    "script": "katakana",
+    "tip": "Kombinasi ギ (gi) bertenten dan ャ (ya kecil). Ketik 'gya'. Muncul pada kata ギャラリー (galeri seni)."
+  },
+  {
+    "char": "ギュ",
+    "romaji": "gyu",
+    "row": "GYA",
+    "script": "katakana",
+    "tip": "Kombinasi ギ (gi) bertenten dan ュ (yu kecil). Ketik 'gyu' pada keyboard."
+  },
+  {
+    "char": "ギョ",
+    "romaji": "gyo",
+    "row": "GYA",
+    "script": "katakana",
+    "tip": "Kombinasi ギ (gi) bertenten dan ョ (yo kecil). Ketik 'gyo'. Muncul pada kata kuliner ギョーザ (gyoza)."
+  },
+  {
+    "char": "ジャ",
+    "romaji": "ja",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ジ (ji) bertenten dan ャ (ya kecil). Ketik 'ja' atau 'zya'. Muncul pada kata ジャム (selai) & ジャケット."
+  },
+  {
+    "char": "ジュ",
+    "romaji": "ju",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ジ (ji) bertenten dan ュ (yu kecil). Ketik 'ju' atau 'zyu'. Muncul pada kata ジュース (jus buah)."
+  },
+  {
+    "char": "ジョ",
+    "romaji": "jo",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ジ (ji) bertenten dan ョ (yo kecil). Ketik 'jo' atau 'zyo'. Muncul pada kata ジョギング (jogging)."
+  },
+  {
+    "char": "ヂャ",
+    "romaji": "ja",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ヂ (ji/di) bertenten dan ャ (ya kecil). Alternatif fonetik untuk 'ja'. Ketik 'dya' atau 'zya'."
+  },
+  {
+    "char": "ヂュ",
+    "romaji": "ju",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ヂ (ji/di) bertenten dan ュ (yu kecil). Alternatif fonetik untuk 'ju'. Ketik 'dyu' atau 'zyu'."
+  },
+  {
+    "char": "ヂョ",
+    "romaji": "jo",
+    "row": "JA",
+    "script": "katakana",
+    "tip": "Kombinasi ヂ (ji/di) bertenten dan ョ (yo kecil). Alternatif fonetik untuk 'jo'. Ketik 'dyo' atau 'zyo'."
+  },
+  {
+    "char": "ビャ",
+    "romaji": "bya",
+    "row": "BYA",
+    "script": "katakana",
+    "tip": "Kombinasi ビ (bi) bertenten dan ャ (ya kecil). Ketik 'bya' pada keyboard."
+  },
+  {
+    "char": "ビュ",
+    "romaji": "byu",
+    "row": "BYA",
+    "script": "katakana",
+    "tip": "Kombinasi ビ (bi) bertenten dan ュ (yu kecil). Ketik 'byu'. Muncul pada kata ビュッフェ (prasmanan buffet)."
+  },
+  {
+    "char": "ビョ",
+    "romaji": "byo",
+    "row": "BYA",
+    "script": "katakana",
+    "tip": "Kombinasi ビ (bi) bertenten dan ョ (yo kecil). Ketik 'byo' pada keyboard."
+  },
+  {
+    "char": "ピャ",
+    "romaji": "pya",
+    "row": "PYA",
+    "script": "katakana",
+    "tip": "Kombinasi ピ (pi) bermaru dan ャ (ya kecil). Ketik 'pya' pada keyboard."
+  },
+  {
+    "char": "ピュ",
+    "romaji": "pyu",
+    "row": "PYA",
+    "script": "katakana",
+    "tip": "Kombinasi ピ (pi) bermaru dan ュ (yu kecil). Ketik 'pyu'. Muncul pada kata ピューレ (puree saus buah)."
+  },
+  {
+    "char": "ピョ",
+    "romaji": "pyo",
+    "row": "PYA",
+    "script": "katakana",
+    "tip": "Kombinasi ピ (pi) bermaru dan ョ (yo kecil). Ketik 'pyo' pada keyboard."
+  },
+  {
+    "char": "っ",
+    "romaji": "xtsu",
+    "row": "SPECIAL",
+    "script": "hiragana",
+    "tip": "Sokuon Hiragana (konsonan rangkap). Menahan napas 1 ketukan sebelum huruf konsonan berikutnya (misal: きって = kitte). Ketik konsonan berikutnya 2x atau ketik 'xtsu'/'ltsu'."
+  },
+  {
+    "char": "ッ",
+    "romaji": "xtsu",
+    "row": "SPECIAL",
+    "script": "katakana",
+    "tip": "Sokuon Katakana (konsonan rangkap serapan). Menahan napas sejenak sebelum letupan konsonan (misal: ベッド = beddo). Ketik konsonan berikutnya 2x atau ketik 'xtsu'/'ltsu'."
+  },
+  {
+    "char": "ー",
+    "romaji": "-",
+    "row": "SPECIAL",
+    "script": "katakana",
+    "tip": "Chōonpu (tanda vokal panjang Katakana). Memperpanjang suara vokal sebelumnya 1 ketukan mora (misal: コーヒー = koohii). Ketik tombol tanda minus/strip (-) pada keyboard."
   }
 ];
 
-    // 327 Vocabulary Database (Hiragana & Katakana Loanwords)
+// Panduan & Aturan Pengetikan Aksara Khusus (Sokuon & Chōonpu)
+const SPECIAL_KANA_RULES = {
+  sokuon: {
+    hiragana: {
+      char: "っ",
+      romaji: "xtsu / ltsu",
+      name: "Sokuon Hiragana (促音)",
+      typingRule: "Ketik konsonan berikutnya 2 kali di keyboard romaji (contoh: 'kitte' -> きって, 'gakkou' -> がっこう). Atau ketik 'xtsu'/'ltsu' untuk memunculkan huruf っ kecil berdiri sendiri.",
+      rule: "Melambangkan konsonan rangkap (geminate consonant) atau jeda glotal hembusan 1 ketukan mora sebelum konsonan k, s, t, p.",
+      mnemonic: "Bentuk つ kecil. Bayangkan tanda rem mendadak sebelum meletupkan bunyi konsonan berikutnya!"
+    },
+    katakana: {
+      char: "ッ",
+      romaji: "xtsu / ltsu",
+      name: "Sokuon Katakana (促音)",
+      typingRule: "Ketik konsonan berikutnya 2 kali saat input katakana (contoh: 'beddo' -> ベッド, 'kappu' -> カップ). Atau ketik 'xtsu'/'ltsu'.",
+      rule: "Digunakan pada kata serapan asing (gairaigo) untuk menahan hembusan nafas sebelum konsonan ganda.",
+      mnemonic: "Bentuk ツ kecil bersudut tajam sebagai tanda jeda loncatan bunyi dalam kata serapan asing."
+    }
+  },
+  choonpu: {
+    katakana: {
+      char: "ー",
+      romaji: "-",
+      name: "Chōonpu (長音符)",
+      typingRule: "Tekan tombol tanda minus / strip / dash (-) pada keyboard saat mengetik mode Jepang.",
+      rule: "Memperpanjang suara vokal sebelumnya sepanjang satu ketukan penuh / mora (contoh: コーヒー = koohii, ケーキ = keeki, タクシー = takushii).",
+      mnemonic: "Garis mendatar lurus penunjuk rentang vokal yang ditarik panjang merata ke samping."
+    }
+  }
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { KANA_CHARS, SPECIAL_KANA_RULES };
+}
